@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quranic Contradictions Hub — لماذا القرآن كاذب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0905;
+    --surface: #17100a;
+    --card: #1c1409;
+    --border: #352210;
+    --border-hover: #6b4520;
+    --saffron: #f5a623;
+    --saffron-dim: rgba(245,166,35,0.12);
+    --gold-light: #f7d060;
+    --cream: #ede0c8;
+    --cream-dim: #b8a080;
+    --muted: #7a6248;
+    --white: #f5ede0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 100% 50% at 50% 0%, rgba(245,166,35,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 60% at 0% 80%, rgba(26,74,122,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 60% at 100% 20%, rgba(106,42,138,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+  /* LANG BAR */
+  .lang-bar {
+    display: flex; justify-content: flex-end; align-items: center;
+    padding: 14px 20px 0; position: relative; z-index: 10;
+    max-width: 1060px; margin: 0 auto;
+  }
+  .lang-label { font-size: 12px; color: var(--muted); margin-right: 10px; letter-spacing: 0.08em; }
+  .lang-toggle { display: flex; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .lang-btn {
+    padding: 5px 16px; font-family: 'Jost', sans-serif; font-size: 13px;
+    font-weight: 500; cursor: pointer; border: none;
+    background: var(--surface); color: var(--muted); transition: all 0.15s; letter-spacing: 0.05em;
+  }
+  .lang-btn.active { background: var(--saffron); color: var(--bg); }
+
+  /* HEADER */
+  header { text-align: center; padding: 48px 20px 40px; position: relative; }
+  .om {
+    font-family: 'Amiri', serif;
+    font-size: 56px; color: var(--saffron); display: block;
+    margin-bottom: 14px; line-height: 1;
+    animation: pulse-glow 4s ease-in-out infinite alternate;
+  }
+  @keyframes pulse-glow {
+    from { text-shadow: 0 0 20px rgba(245,166,35,0.25), 0 0 50px rgba(245,166,35,0.08); }
+    to   { text-shadow: 0 0 35px rgba(245,166,35,0.55), 0 0 80px rgba(245,166,35,0.2); }
+  }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px,5.5vw,58px); font-weight: 600; letter-spacing: 0.02em; line-height: 1.15; }
+  h1 em { color: var(--saffron); font-style: italic; }
+  .sub-en { margin-top: 10px; font-size: 13px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+  .sub-ar { margin-top: 10px; font-family: 'Amiri', serif; font-size: 17px; color: var(--muted); display: none; }
+  .rule { width: 100px; height: 1px; background: linear-gradient(90deg,transparent,var(--saffron),transparent); margin: 24px auto 0; }
+
+  /* NOTICE */
+  .notice {
+    border: 1px solid var(--border); border-left: 3px solid var(--saffron);
+    background: var(--surface); border-radius: 3px;
+    padding: 16px 20px; margin-bottom: 32px;
+    font-size: 14px; color: var(--cream-dim); line-height: 1.7;
+  }
+  .notice strong { color: var(--saffron); font-weight: 500; }
+
+  /* FILTER ROWS */
+  .filter-group { margin-bottom: 10px; }
+  .filter-label { font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tabs.trad-tabs { margin-bottom: 36px; }
+  .tab {
+    padding: 6px 16px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--muted);
+    font-family: 'Jost', sans-serif; font-size: 12.5px;
+    cursor: pointer; border-radius: 2px; transition: all 0.15s; letter-spacing: 0.06em;
+  }
+  .tab:hover { border-color: var(--border-hover); color: var(--cream-dim); }
+  .tab.active { background: var(--saffron); border-color: var(--saffron); color: var(--bg); font-weight: 600; }
+
+  /* SECTION */
+  .section { margin-bottom: 52px; }
+  .section.hidden { display: none; }
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+  .sec-head h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; white-space: nowrap; color: var(--white); }
+  .sec-line { flex: 1; height: 1px; background: var(--border); }
+  .sec-tag { font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--saffron); border: 1px solid rgba(245,166,35,0.3); padding: 3px 10px; border-radius: 2px; white-space: nowrap; }
+  .sec-desc { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; max-width: 680px; line-height: 1.65; }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 14px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 20px 20px 16px;
+    text-decoration: none; display: block;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .card.card-hidden { display: none; }
+  .card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent,var(--saffron));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  }
+  .card:hover { border-color: var(--accent,var(--saffron)); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.5); }
+  .card:hover::after { transform: scaleX(1); }
+  .card-icon { font-size: 22px; margin-bottom: 9px; display: block; line-height: 1; }
+  .card-verse-ar { font-family: 'Amiri', serif; font-size: 18px; color: var(--saffron); margin-bottom: 8px; line-height: 1.4; direction: rtl; text-align: right; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 3px; line-height: 1.2; }
+  .card-title-ar { font-family: 'Amiri', serif; font-size: 18px; color: var(--saffron); margin-bottom: 3px; display: none; direction: rtl; text-align: right; }
+  .card-source { font-size: 11px; color: var(--accent,var(--saffron)); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-bottom: 4px; }
+  .card-ref { font-size: 10.5px; color: #e07070; font-weight: 600; margin-bottom: 9px; }
+  .card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .card-desc-ar { font-family: 'Amiri', serif; font-size: 15px; color: var(--muted); line-height: 1.7; display: none; direction: rtl; text-align: right; }
+  .badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+  .badge { font-size: 10.5px; padding: 2px 8px; border-radius: 2px; letter-spacing: 0.05em; }
+  .b-eng  { background: rgba(237,224,200,0.07); color: #9e8464; border: 1px solid rgba(237,224,200,0.15); }
+  .b-ar   { background: rgba(26,122,110,0.12);  color: #4abaaa; border: 1px solid rgba(26,122,110,0.28); }
+  .b-vs   { background: rgba(184,50,50,0.15);   color: #e07070; border: 1px solid rgba(184,50,50,0.3); }
+  .b-red  { background: rgba(192,80,80,0.15); color: #e07070; border: 1px solid rgba(192,80,80,0.35); }
+
+  /* accent colors */
+  .a-saffron { --accent: #f5a623; }
+  .a-red     { --accent: #c05050; }
+  .a-teal    { --accent: #1a9b8c; }
+  .a-blue    { --accent: #4090cc; }
+  .a-green   { --accent: #48a068; }
+  .a-purple  { --accent: #9a4aaa; }
+
+  /* empty state */
+  .no-results {
+    display: none; text-align: center; padding: 40px 20px;
+    color: var(--muted); font-size: 14px; letter-spacing: 0.05em;
+    border: 1px dashed var(--border); border-radius: 4px; margin-bottom: 30px;
+  }
+  .no-results.visible { display: block; }
+
+  /* PORTALS */
+  .portal-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(190px,1fr)); gap: 10px; }
+  .portal-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+    padding: 14px 16px; text-decoration: none; display: flex; align-items: center; gap: 12px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .portal-card:hover { border-color: var(--saffron); background: var(--card); }
+  .pi { font-size: 20px; flex-shrink: 0; }
+  .pn { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+  .pn-ar { font-family: 'Amiri', serif; font-size: 14px; color: var(--saffron); display: none; margin-bottom: 2px; direction: rtl; text-align: right; }
+  .pd { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 28px 20px; text-align: center; color: var(--muted); font-size: 13px; position: relative; z-index: 1; line-height: 1.8; }
+  footer .mantra { font-family: 'Amiri', serif; font-size: 15px; color: var(--cream-dim); margin-bottom: 8px; direction: rtl; text-align: center; }
+  footer strong { color: var(--saffron); font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .portal-grid { grid-template-columns: 1fr 1fr; }
+    .sec-tag { display: none; }
+    h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <span class="lang-label">Language / اللغة</span>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
+    <button class="lang-btn" onclick="setLang('ar',this)">العربية</button>
+  </div>
+</div>
+
+<header>
+  <span class="om">☪️</span>
+  <h1>Quran <em>Falsehood</em> Hub</h1>
+  <p class="sub-en">Scientific errors · Textual contradictions · Historical blunders · Moral failures · Wild claims scholars cannot explain · Direct verse analysis from Classical Arabic</p>
+  <p class="sub-ar" style="display:none">الأخطاء العلمية · التناقضات النصية · الأخطاء التاريخية · الإخفاقات الأخلاقية · الادعاءات الغريبة التي لا يستطيع العلماء تفسيرها · تحليل الآيات المباشر من النص العربي الفصحى</p>
+  <div class="rule"></div>
+</header>
+
+<div class="wrap">
+
+<div class="notice">
+  <span class="t-en"><strong>No apologetics. No taqiyya.</strong> Every verse is quoted directly from the <strong>Classical Arabic Quran (Hafs ʿan ʿĀṣim — Uthmani script)</strong> with Sahih International English rendering — no reinterpretation, no modern excuses. All contradictions, errors and wild claims verified 2026.</span>
+  <span class="t-ar" style="display:none"><strong>لا دفاع. لا تقية.</strong> كل آية مقتبسة مباشرة من <strong>القرآن الكريم (حفص عن عاصم — الرسم العثماني)</strong> مع الترجمة الإنجليزية سحيح إنترناشونال — لا إعادة تفسير، لا أعذار حديثة. جميع التناقضات والأخطاء والادعاءات الغريبة مثبتة عام ٢٠٢٦.</span>
+</div>
+
+<!-- FILTER ROW 1: Issue type -->
+<div class="filter-group">
+  <div class="filter-label t-en">Issue Type</div>
+  <div class="filter-label t-ar" style="display:none">نوع المشكلة</div>
+  <div class="tabs">
+    <button class="tab active" id="tab-all"     onclick="filterSection('all',this)">All Issues</button>
+    <button class="tab"        id="tab-science" onclick="filterSection('science',this)">Scientific Errors</button>
+    <button class="tab"        id="tab-contradict" onclick="filterSection('contradict',this)">Internal Contradictions</button>
+    <button class="tab"        id="tab-history" onclick="filterSection('history',this)">Historical Blunders</button>
+    <button class="tab"        id="tab-moral"   onclick="filterSection('moral',this)">Moral &amp; Ethical Failures</button>
+    <button class="tab"        id="tab-portals" onclick="filterSection('portals',this)">Full Portals</button>
+  </div>
+</div>
+
+<!-- FILTER ROW 2: Source -->
+<div class="filter-group">
+  <div class="filter-label t-en">Source / Revelation Period</div>
+  <div class="filter-label t-ar" style="display:none">المصدر / عصر التنزيل</div>
+  <div class="tabs trad-tabs">
+    <button class="tab active"        id="trad-all"       onclick="filterTrad('all',this)">All Verses</button>
+    <button class="tab trad-vaishnava" id="trad-meccan"   onclick="filterTrad('meccan',this)">Meccan</button>
+    <button class="tab trad-shaiva"    id="trad-medinan"  onclick="filterTrad('medinan',this)">Medinan</button>
+  </div>
+</div>
+
+<div class="no-results" id="no-results">
+  <span class="t-en">No issues match the current filters — try a different combination.</span>
+  <span class="t-ar" style="display:none">لا توجد مشكلات تطابق الفلاتر الحالية — جرب مزيجاً آخر.</span>
+</div>
+
+<!-- ════ SCIENTIFIC ERRORS ════ -->
+<div class="section" data-s="science">
+  <div class="sec-head">
+    <h2><span class="t-en">Scientific Errors</span><span class="t-ar" style="display:none">الأخطاء العلمية</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">علم الكونيات القرن السابع يُقدم كحقيقة إلهية</span>
+  </div>
+  <p class="sec-desc t-en">The Quran contains multiple claims about the natural world that directly contradict modern science — presented as miraculous knowledge from Allah. Scholars have no coherent scientific explanation.</p>
+  <p class="sec-desc t-ar" style="display:none">يحتوي القرآن على عدة ادعاءات عن العالم الطبيعي تتعارض مباشرة مع العلم الحديث — وتُقدم كمعرفة معجزة من الله. لا يملك العلماء تفسيراً علمياً متماسكاً.</p>
+  <div class="grid">
+
+    <a href="#" class="card a-red" data-trad="meccan">
+      <span class="card-icon">🌅</span>
+      <div class="card-verse-ar">حَتَّىٰ إِذَا بَلَغَ مَغْرِبَ الشَّمْسِ وَجَدَهَا تَغْرُبُ فِي عَيْنٍ حَمِئَةٍ</div>
+      <div class="card-title">Sun sets in a muddy spring</div>
+      <div class="card-title-ar">تغرب الشمس في عين حمئة</div>
+      <div class="card-source">القرآن الكريم · ١٨:٨٦ (الكهف) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 18:86 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"Until, when he reached the setting of the sun, he found it setting in a spring of dark mud..." — Dhul-Qarnayn literally sees the sun setting into a muddy pool. Flat-earth cosmology error that scholars cannot explain without mental gymnastics.</p>
+      <p class="card-desc-ar">«حَتَّىٰ إِذَا بَلَغَ مَغْرِبَ الشَّمْسِ وَجَدَهَا تَغْرُبُ فِي عَيْنٍ حَمِئَةٍ» — يرى ذو القرنين الشمس تغرب فعلاً في عين حمئة. خطأ كونيات الأرض المسطحة لا يستطيع العلماء تفسيره.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Scientific error</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="meccan">
+      <span class="card-icon">🧬</span>
+      <div class="card-verse-ar">ثُمَّ جَعَلْنَاهُ نُطْفَةً فِي قَرَارٍ مَكِينٍ ۝ ثُمَّ خَلَقْنَا النُّطْفَةَ عَلَقَةً فَخَلَقْنَا الْعَلَقَةَ مُضْغَةً</div>
+      <div class="card-title">Embryology stages</div>
+      <div class="card-title-ar">مراحل الجنين</div>
+      <div class="card-source">القرآن الكريم · ٢٣:١٢-١٤ (المؤمنون) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 23:12-14 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"We created man from an extract of clay... Then We placed him as a sperm-drop... Then We made the sperm-drop into a clinging clot..." — Incorrect sequence that matches Greek theories, not modern embryology. Scholars’ “scientific miracle” claim has been thoroughly debunked.</p>
+      <p class="card-desc-ar">«ثُمَّ جَعَلْنَاهُ نُطْفَةً... ثُمَّ خَلَقْنَا النُّطْفَةَ عَلَقَةً» — تسلسل خاطئ يطابق النظريات اليونانية. دُحِضَ ادعاء «المعجزة العلمية» تماماً.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Scientific error</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="meccan">
+      <span class="card-icon">🦴</span>
+      <div class="card-verse-ar">خُلِقَ مِنْ مَاءٍ دَافِقٍ ۝ يَخْرُجُ مِنْ بَيْنِ الصُّلْبِ وَالتَّرَائِبِ</div>
+      <div class="card-title">Semen from backbone &amp; ribs</div>
+      <div class="card-title-ar">المني من بين الصلب والترائب</div>
+      <div class="card-source">القرآن الكريم · ٨٦:٦-٧ (الطارق) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 86:6-7 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"He was created from a fluid, ejected, emerging from between the backbone and the ribs." — Ancient Greek error; semen is produced in the testes. No scientific explanation from scholars.</p>
+      <p class="card-desc-ar">«خُلِقَ مِنْ مَاءٍ دَافِقٍ يَخْرُجُ مِنْ بَيْنِ الصُّلْبِ وَالتَّرَائِبِ» — خطأ يوناني قديم. العلماء لا يملكون تفسيراً علمياً.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Scientific error</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="meccan">
+      <span class="card-icon">🏔️</span>
+      <div class="card-verse-ar">وَالْجِبَالَ أَوْتَادًا</div>
+      <div class="card-title">Mountains as pegs to stop earthquakes</div>
+      <div class="card-title-ar">الجبال أوتاداً</div>
+      <div class="card-source">القرآن الكريم · ٧٨:٦-٧ ، ١٦:١٥ ، ٣١:١٠ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 78:6-7, 16:15, 31:10 (full verses above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"Have We not made the earth a resting place? And the mountains as stakes?" — Mountains do not prevent earthquakes; they are formed by tectonic plates that actually cause them. Scholars’ “isostasy miracle” claim is pseudoscience.</p>
+      <p class="card-desc-ar">«أَفَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا ۝ وَالْجِبَالَ أَوْتَادًا» — الجبال لا تمنع الزلازل. ادعاء «معجزة التوازن» هو علم زائف.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Scientific error</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="meccan">
+      <span class="card-icon">⭐</span>
+      <div class="card-verse-ar">وَلَقَدْ زَيَّنَّا السَّمَاءَ الدُّنْيَا بِمَصَابِيحَ وَجَعَلْنَاهَا رُجُومًا لِلشَّيَاطِينِ</div>
+      <div class="card-title">Shooting stars as missiles against jinn</div>
+      <div class="card-title-ar">النجوم رجوماً للشياطين</div>
+      <div class="card-source">القرآن الكريم · ٦٧:٥ (الملك) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 67:5 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"We have adorned the nearest heaven with lamps and have made them [as] missiles for the devils." — Meteors are not divine weapons against invisible beings. No explanation possible.</p>
+      <p class="card-desc-ar">«وَلَقَدْ زَيَّنَّا السَّمَاءَ الدُّنْيَا بِمَصَابِيحَ وَجَعَلْنَاهَا رُجُومًا لِلشَّيَاطِينِ» — الشهب ليست أسلحة إلهية ضد الجن. لا تفسير ممكن.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Scientific error</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="meccan">
+      <span class="card-icon">🌍</span>
+      <div class="card-verse-ar">وَجَعَلْنَا السَّمَاءَ سَقْفًا مَحْفُوظًا</div>
+      <div class="card-title">Sky as a solid protected ceiling</div>
+      <div class="card-title-ar">السماء سقفاً محفوظاً</div>
+      <div class="card-source">القرآن الكريم · ٢١:٣٢ (الأنبياء) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 21:32 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"We made the sky a protected ceiling, but they turn away from its signs." — The Quran presents the sky as a solid dome that could fall. Modern science knows it is not solid. Scholars have no answer.</p>
+      <p class="card-desc-ar">«وَجَعَلْنَا السَّمَاءَ سَقْفًا مَحْفُوظًا» — يصف القرآن السماء كقبة صلبة. العلماء لا يملكون جواباً.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Scientific error</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="meccan">
+      <span class="card-icon">🪐</span>
+      <div class="card-verse-ar">وَالشَّمْسُ تَجْرِي لِمُسْتَقَرٍّ لَهَا</div>
+      <div class="card-title">Sun &amp; moon orbit the earth</div>
+      <div class="card-title-ar">الشمس والقمر يدوران حول الأرض</div>
+      <div class="card-source">القرآن الكريم · ٣٦:٣٨-٤٠ (يس) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 36:38-40 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"The sun runs its course to a resting place... It is not for the sun to overtake the moon..." — Geocentric model. The earth actually orbits the sun. Scholars cannot reconcile this with heliocentrism.</p>
+      <p class="card-desc-ar">«وَالشَّمْسُ تَجْرِي لِمُسْتَقَرٍّ لَهَا» — نموذج مركزية الأرض. العلماء لا يستطيعون التوفيق مع الهليوسنترية.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Scientific error</span></div>
+    </a>
+
+    <a href="#" class="card a-red" data-trad="meccan">
+      <span class="card-icon">🐝</span>
+      <div class="card-verse-ar">يَخْرُجُ مِنْ بُطُونِهَا شَرَابٌ مُخْتَلِفٌ أَلْوَانُهُ فِيهِ شِفَاءٌ لِلنَّاسِ</div>
+      <div class="card-title">Honey as cure for all diseases</div>
+      <div class="card-title-ar">الشَّهْدُ شِفَاءٌ لِلنَّاسِ</div>
+      <div class="card-source">القرآن الكريم · ١٦:٦٩ (النحل) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 16:69 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"There emerges from their bellies a drink... in which there is healing for people." — Honey is not a cure for all diseases. The verse presents it as a universal remedy — a claim modern medicine rejects.</p>
+      <p class="card-desc-ar">«يَخْرُجُ مِنْ بُطُونِهَا شَرَابٌ... فِيهِ شِفَاءٌ لِلنَّاسِ» — الشَّهْد ليس علاجاً لكل الأمراض. العلماء لا يملكون أساساً علمياً.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Scientific error</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ════ INTERNAL CONTRADICTIONS ════ -->
+<div class="section" data-s="contradict">
+  <div class="sec-head">
+    <h2><span class="t-en">Internal Contradictions</span><span class="t-ar" style="display:none">التناقضات الداخلية</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">كلام الله الأزلي يتناقض مع نفسه — العلماء لا يستطيعون التفسير</span>
+  </div>
+  <p class="sec-desc t-en">The Quran repeatedly contradicts its own statements within the text — impossible for a perfect, uncreated book. Scholars resort to “abrogation” which itself creates more problems.</p>
+  <p class="sec-desc t-ar" style="display:none">يتناقض القرآن مع نفسه مراراً داخل النص — مستحيل على كتاب كامل غير مخلوق. العلماء يلجأون إلى «النسخ» الذي يخلق مشكلات أكثر.</p>
+  <div class="grid">
+
+    <a href="#" class="card a-purple" data-trad="meccan">
+      <span class="card-icon">📅</span>
+      <div class="card-verse-ar">إِنَّ رَبَّكُمُ اللَّهُ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ فِي سِتَّةِ أَيَّامٍ</div>
+      <div class="card-title">Creation in 6 days vs 8 days</div>
+      <div class="card-title-ar">الخلق في ٦ أيام مقابل ٨ أيام</div>
+      <div class="card-source">القرآن الكريم · ٧:٥٤ مقابل ٤١:٩-١٢ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 7:54 vs 41:9-12 (full verses above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">7:54 says six days total. 41:9-12 details 2 (earth) + 4 (provisions) + 2 (heavens) = 8 days. Numerical contradiction that abrogation cannot fix.</p>
+      <p class="card-desc-ar">«خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ فِي سِتَّةِ أَيَّامٍ» مقابل تفصيل ٨ أيام في ٤١:٩-١٢. تناقض عددي لا يحله النسخ.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradiction</span></div>
+    </a>
+
+    <a href="#" class="card a-purple" data-trad="medinan">
+      <span class="card-icon">🛡️</span>
+      <div class="card-verse-ar">لَا إِكْرَاهَ فِي الدِّينِ ۝ اقْتُلُوا الْمُشْرِكِينَ حَيْثُ وَجَدْتُمُوهُمْ</div>
+      <div class="card-title">No compulsion in religion vs sword verses</div>
+      <div class="card-title-ar">لا إكراه في الدين مقابل آيات السيف</div>
+      <div class="card-source">القرآن الكريم · ٢:٢٥٦ مقابل ٩:٥ و٩:٢٩ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 2:256 vs 9:5 &amp; 9:29 (full verses above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"There shall be no compulsion in religion" (2:256) is directly contradicted by "kill the polytheists wherever you find them" (9:5) and fight until they pay jizyah (9:29). Abrogation is the only “explanation” scholars offer.</p>
+      <p class="card-desc-ar">«لَا إِكْرَاهَ فِي الدِّينِ» مقابل «اقْتُلُوا الْمُشْرِكِينَ حَيْثُ وَجَدْتُمُوهُمْ». النسخ هو الجواب الوحيد الذي يقدمه العلماء.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradiction</span></div>
+    </a>
+
+    <a href="#" class="card a-purple" data-trad="medinan">
+      <span class="card-icon">📜</span>
+      <div class="card-verse-ar">يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ ۝ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنْثَيَيْنِ</div>
+      <div class="card-title">Inheritance math error</div>
+      <div class="card-title-ar">خطأ حسابي في الميراث</div>
+      <div class="card-source">القرآن الكريم · ٤:١١-١٢ و٤:١٧٦ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 4:11-12 &amp; 4:176 (full verses above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">Shares for daughters + parents + wife exceed 100% in common cases. The Quran provides no solution. Scholars invented “awliya” rules centuries later.</p>
+      <p class="card-desc-ar">حصص البنات + الوالدين + الزوجة تتجاوز ١٠٠٪. القرآن لا يقدم حلاً. العلماء اخترعوا قواعد «الأولياء» بعد قرون.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradiction</span></div>
+    </a>
+
+    <a href="#" class="card a-purple" data-trad="meccan">
+      <span class="card-icon">🧔</span>
+      <div class="card-verse-ar">قُلْ إِنِّي أَوَّلُ الْمُسْلِمِينَ ۝ وَمَا كُنْتُ أَوَّلَ الْمُرْسَلِينَ</div>
+      <div class="card-title">Who was the first Muslim?</div>
+      <div class="card-title-ar">من كان أول مسلم؟</div>
+      <div class="card-source">القرآن الكريم · ٣٩:١٢ مقابل ٢:١٢٧ و٤٦:٩ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 39:12 vs 2:127 &amp; 46:9 (full verses above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">Muhammad is told to say he is the first Muslim (39:12). But Abraham and his sons are called Muslims (2:127). Muhammad himself says “I was not the first of the messengers” (46:9). Direct contradiction.</p>
+      <p class="card-desc-ar">«قُلْ إِنِّي أَوَّلُ الْمُسْلِمِينَ» مقابل إبراهيم وأبنائه مسلمون. تناقض مباشر.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradiction</span></div>
+    </a>
+
+    <a href="#" class="card a-purple" data-trad="meccan">
+      <span class="card-icon">👁️</span>
+      <div class="card-verse-ar">وُجُوهٌ يَوْمَئِذٍ نَاضِرَةٌ ۝ إِلَىٰ رَبِّهَا نَاظِرَةٌ ۝ وَلَا تُدْرِكُهُ الْأَبْصَارُ</div>
+      <div class="card-title">Can Allah be seen?</div>
+      <div class="card-title-ar">هل يُرى الله؟</div>
+      <div class="card-source">القرآن الكريم · ٧٥:٢٢-٢٣ مقابل ٦:١٠٣ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 75:22-23 vs 6:103 (full verses above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">On Judgment Day believers will see Allah face-to-face (75:22-23). Yet “No vision can grasp Him” (6:103). Scholars cannot reconcile both statements.</p>
+      <p class="card-desc-ar">«وُجُوهٌ يَوْمَئِذٍ نَاضِرَةٌ إِلَىٰ رَبِّهَا نَاظِرَةٌ» مقابل «وَلَا تُدْرِكُهُ الْأَبْصَارُ». العلماء لا يستطيعون التوفيق.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradiction</span></div>
+    </a>
+
+    <a href="#" class="card a-purple" data-trad="medinan">
+      <span class="card-icon">📏</span>
+      <div class="card-verse-ar">وَيَوْمٌ عِنْدَ رَبِّكَ كَأَلْفِ سَنَةٍ ۝ وَيَوْمٌ عِنْدَ رَبِّكَ كَخَمْسِينَ أَلْفَ سَنَةٍ</div>
+      <div class="card-title">Length of a day with Allah</div>
+      <div class="card-title-ar">طول يوم عند الله</div>
+      <div class="card-source">القرآن الكريم · ٣٢:٥ مقابل ٧٠:٤ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 32:5 vs 70:4 (full verses above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">One day with Allah equals 1,000 years (32:5) but also 50,000 years (70:4). Scholars have no mathematical or logical resolution.</p>
+      <p class="card-desc-ar">«يَوْمٌ عِنْدَ رَبِّكَ كَأَلْفِ سَنَةٍ» مقابل «كَخَمْسِينَ أَلْفَ سَنَةٍ». لا حل حسابي أو منطقي.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradiction</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ════ HISTORICAL BLUNDERS ════ -->
+<div class="section" data-s="history">
+  <div class="sec-head">
+    <h2><span class="t-en">Historical Blunders</span><span class="t-ar" style="display:none">الأخطاء التاريخية</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">أخطاء زمنية ووقائع خاطئة — العلماء لا يستطيعون التفسير</span>
+  </div>
+  <p class="sec-desc t-en">The Quran places people and events in the wrong time periods — impossible if it is divine revelation of history. Scholars offer weak “linguistic” excuses.</p>
+  <p class="sec-desc t-ar" style="display:none">يضع القرآن أشخاصاً وأحداثاً في أزمنة خاطئة — مستحيل إذا كان تنزيلاً إلهياً للتاريخ. العلماء يقدمون أعذاراً ضعيفة «لغوية».</p>
+  <div class="grid">
+
+    <a href="#" class="card a-blue" data-trad="meccan">
+      <span class="card-icon">👩</span>
+      <div class="card-verse-ar">يَا أُخْتَ هَارُونَ</div>
+      <div class="card-title">Mary is “sister of Aaron”</div>
+      <div class="card-title-ar">يا أخت هارون</div>
+      <div class="card-source">القرآن الكريم · ١٩:٢٨ و٦٦:١٢ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 19:28 &amp; 66:12 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"O sister of Aaron..." — Mary (mother of Jesus, 1st century CE) is called sister of Aaron (brother of Moses, 1400 BCE). Clear confusion of two different Maryams separated by 1,400 years.</p>
+      <p class="card-desc-ar">«يَا أُخْتَ هَارُونَ» — مريم أم عيسى تُدعى أخت هارون. خلط واضح بين مريمين منفصلتين بـ١٤٠٠ سنة.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Historical error</span></div>
+    </a>
+
+    <a href="#" class="card a-blue" data-trad="meccan">
+      <span class="card-icon">🏛️</span>
+      <div class="card-verse-ar">وَقَالَ السَّامِرِيُّ</div>
+      <div class="card-title">Samaritans in Moses’ time</div>
+      <div class="card-title-ar">السامري في زمن موسى</div>
+      <div class="card-source">القرآن الكريم · ٢٠:٨٥-٩٧ (طه) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 20:85-97 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"The Samaritan has led them astray" — Samaritans did not exist until 722 BCE, centuries after Moses. Anachronism scholars cannot resolve.</p>
+      <p class="card-desc-ar">«وَقَالَ السَّامِرِيُّ» — السامريون لم يوجدوا إلا بعد ٧٢٢ ق.م. خطأ زمني لا يستطيع العلماء حله.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Historical error</span></div>
+    </a>
+
+    <a href="#" class="card a-blue" data-trad="meccan">
+      <span class="card-icon">👑</span>
+      <div class="card-verse-ar">وَهَامَانُ</div>
+      <div class="card-title">Haman as Pharaoh’s minister</div>
+      <div class="card-title-ar">هامان وزير فرعون</div>
+      <div class="card-source">القرآن الكريم · ٢٨:٦ ، ٤٠:٣٦ (القصص والغافر) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 28:6 &amp; 40:36 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">Haman is Pharaoh’s high official during Moses’ time. The real Haman appears in Esther (Persia, 1,100 years later). Scholars have no historical evidence.</p>
+      <p class="card-desc-ar">«وَهَامَانُ» — هامان وزير فرعون في زمن موسى. الهامان الحقيقي في سفر إستير بعد ١١٠٠ سنة. لا دليل تاريخي.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Historical error</span></div>
+    </a>
+
+    <a href="#" class="card a-blue" data-trad="meccan">
+      <span class="card-icon">🕌</span>
+      <div class="card-verse-ar">سُبْحَانَ الَّذِي أَسْرَىٰ بِعَبْدِهِ لَيْلًا مِنَ الْمَسْجِدِ الْحَرَامِ إِلَى الْمَسْجِدِ الْأَقْصَى</div>
+      <div class="card-title">Al-Aqsa Mosque in Jerusalem before it existed</div>
+      <div class="card-title-ar">المسجد الأقصى قبل وجوده</div>
+      <div class="card-source">القرآن الكريم · ١٧:١ (الإسراء) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 17:1 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"Glory be to Him who took His servant by night from al-Masjid al-Haram to al-Masjid al-Aqsa..." — Al-Aqsa Mosque was built in 705 CE; the Night Journey is dated to ~621 CE. Anachronism scholars cannot explain.</p>
+      <p class="card-desc-ar">«أَسْرَىٰ... إِلَى الْمَسْجِدِ الْأَقْصَى» — المسجد الأقصى بُني سنة ٧٠٥ م بينما الإسراء حوالي ٦٢١ م. خطأ زمني.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Historical error</span></div>
+    </a>
+
+    <a href="#" class="card a-blue" data-trad="meccan">
+      <span class="card-icon">🏇</span>
+      <div class="card-verse-ar">وَيَسْأَلُونَكَ عَنْ ذِي الْقَرْنَيْنِ</div>
+      <div class="card-title">Dhul-Qarnayn is Alexander the Great</div>
+      <div class="card-title-ar">ذو القرنين هو الإسكندر الأكبر</div>
+      <div class="card-source">القرآن الكريم · ١٨:٨٣-٩٨ (الكهف) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 18:83-98 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">The Quran presents Dhul-Qarnayn (Alexander) as a monotheist who builds a wall against Gog and Magog. Alexander was a pagan polytheist. Scholars’ identification creates massive historical contradiction.</p>
+      <p class="card-desc-ar">«وَيَسْأَلُونَكَ عَنْ ذِي الْقَرْنَيْنِ» — يصف القرآن ذا القرنين (الإسكندر) بأنه موحد. الإسكندر كان وثنياً. التناقض التاريخي هائل.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Historical error</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ════ MORAL &amp; ETHICAL FAILURES ════ -->
+<div class="section" data-s="moral">
+  <div class="sec-head">
+    <h2><span class="t-en">Moral &amp; Ethical Failures</span><span class="t-ar" style="display:none">الإخفاقات الأخلاقية</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">داسة، ضرب الزوجة، امتيازات خاصة لمحمد، زواج الأطفال</span>
+  </div>
+  <p class="sec-desc t-en">The Quran endorses practices universally condemned today — presented as eternal divine law. Scholars defend them as “contextual” while claiming the Quran is timeless.</p>
+  <p class="sec-desc t-ar" style="display:none">يؤيد القرآن ممارسات تُدان عالمياً اليوم — ويُقدمها كشريعة إلهية أبدية. يدافع العلماء عنها بأنها «سياقية» بينما يدَّعون أن القرآن كالأزلي.</p>
+  <div class="grid">
+
+    <a href="#" class="card a-green" data-trad="medinan">
+      <span class="card-icon">⛓️</span>
+      <div class="card-verse-ar">إِلَّا عَلَىٰ أَزْوَاجِهِمْ أَوْ مَا مَلَكَتْ أَيْمَانُهُمْ</div>
+      <div class="card-title">Slavery &amp; “right hand possesses”</div>
+      <div class="card-title-ar">الداسة وما ملكت أيمانهم</div>
+      <div class="card-source">القرآن الكريم · ٢٣:٥-٦ ، ٤:٢٤ ، ٣٣:٥٠ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 23:5-6, 4:24, 33:50 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"...except from their wives or those their right hands possess..." — Explicit permission for sexual use of female slaves/captives. Slavery is never abolished in the Quran.</p>
+      <p class="card-desc-ar">«إِلَّا عَلَىٰ أَزْوَاجِهِمْ أَوْ مَا مَلَكَتْ أَيْمَانُهُمْ» — إباحة صريحة للعلاقة الجنسية مع الإماء. الرق لم يُلغَ أبداً في القرآن.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral failure</span></div>
+    </a>
+
+    <a href="#" class="card a-green" data-trad="medinan">
+      <span class="card-icon">👊</span>
+      <div class="card-verse-ar">فَعِظُوهُنَّ وَاهْجُرُوهُنَّ فِي الْمَضَاجِعِ وَاضْرِبُوهُنَّ</div>
+      <div class="card-title">Wife beating permitted</div>
+      <div class="card-title-ar">ضرب الزوجة مباح</div>
+      <div class="card-source">القرآن الكريم · ٤:٣٤ (النساء) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 4:34 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"...strike them." — Divine permission to physically discipline wives. Scholars’ “light tap” reinterpretation contradicts the Arabic text and hadith.</p>
+      <p class="card-desc-ar">«وَاضْرِبُوهُنَّ» — إذن إلهي بضرب الزوجات. تفسير العلماء «الضربة الخفيفة» يتعارض مع النص العربي والحديث.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral failure</span></div>
+    </a>
+
+    <a href="#" class="card a-green" data-trad="medinan">
+      <span class="card-icon">⚖️</span>
+      <div class="card-verse-ar">فَإِنْ لَمْ يَكُونَا رَجُلَيْنِ فَرَجُلٌ وَامْرَأَتَانِ</div>
+      <div class="card-title">Women’s testimony worth half</div>
+      <div class="card-title-ar">شهادة المرأة نصف</div>
+      <div class="card-source">القرآن الكريم · ٢:٢٨٢ (البقرة) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 2:282 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"...a man and two women..." — One man’s testimony equals two women’s. Explicit gender inequality presented as divine law.</p>
+      <p class="card-desc-ar">«فَرَجُلٌ وَامْرَأَتَانِ» — شهادة رجل واحد تساوي شهادة امرأتين. تمييز جنسي صريح.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral failure</span></div>
+    </a>
+
+    <a href="#" class="card a-green" data-trad="medinan">
+      <span class="card-icon">🧒</span>
+      <div class="card-verse-ar">وَاللَّائِي لَمْ يَحِضْنَ</div>
+      <div class="card-title">Pre-pubescent marriage waiting period</div>
+      <div class="card-title-ar">فترة الانتظار للصغيرات غير الحائضات</div>
+      <div class="card-source">القرآن الكريم · ٦٥:٤ (الطلاق) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 65:4 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"...those who have not menstruated..." — Regulates divorce/idda for girls who have not yet reached puberty, proving child marriage is permitted.</p>
+      <p class="card-desc-ar">«وَاللَّائِي لَمْ يَحِضْنَ» — تنظيم الطلاق للفتيات اللواتي لم يبلغن بعد. يثبت جواز زواج الأطفال.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral failure</span></div>
+    </a>
+
+    <a href="#" class="card a-green" data-trad="medinan">
+      <span class="card-icon">👑</span>
+      <div class="card-verse-ar">يَا أَيُّهَا النَّبِيُّ إِنَّا أَحْلَلْنَا لَكَ أَزْوَاجَكَ... وَمَا مَلَكَتْ يَمِينُكَ</div>
+      <div class="card-title">Muhammad’s special sexual privileges</div>
+      <div class="card-title-ar">امتيازات محمد الجنسية الخاصة</div>
+      <div class="card-source">القرآن الكريم · ٣٣:٥٠-٥٢ (الأحزاب) — حفص عن عاصم</div>
+      <div class="card-ref">Quran 33:50-52 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"O Prophet, indeed We have made lawful to you your wives... and those your right hand possesses..." — Muhammad alone is allowed unlimited wives and slave-girls. Scholars cannot justify why the “perfect example” gets special immoral rules.</p>
+      <p class="card-desc-ar">«يَا أَيُّهَا النَّبِيُّ إِنَّا أَحْلَلْنَا لَكَ...» — محمد وحده يُباح له عدد غير محدود من الزوجات والإماء. العلماء لا يبررون لماذا حصل «القدوة المثالية» على قواعد غير أخلاقية خاصة.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral failure</span></div>
+    </a>
+
+    <a href="#" class="card a-green" data-trad="medinan">
+      <span class="card-icon">🗡️</span>
+      <div class="card-verse-ar">فَإِذَا لَقِيتُمُ الَّذِينَ كَفَرُوا فَضَرْبَ الرِّقَابِ</div>
+      <div class="card-title">Beheading captives &amp; no ransom until Islam dominates</div>
+      <div class="card-title-ar">ضرب الرقاب للأسرى</div>
+      <div class="card-source">القرآن الكريم · ٤٧:٤ و٨:٦٧ — حفص عن عاصم</div>
+      <div class="card-ref">Quran 47:4 &amp; 8:67 (full verse above) — Classical Hafs Uthmani text</div>
+      <p class="card-desc">"When you meet the disbelievers, strike their necks..." and criticism for taking ransom instead of killing. Permanent divine endorsement of beheading prisoners.</p>
+      <p class="card-desc-ar">«فَإِذَا لَقِيتُمُ الَّذِينَ كَفَرُوا فَضَرْبَ الرِّقَابِ» — إقرار إلهي دائم بقطع رؤوس الأسرى.</p>
+      <div class="badges"><span class="badge b-eng">English</span><span class="badge b-ar">عربي فصحى</span><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral failure</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ════ PORTALS ════ -->
+<div class="section" data-s="portals">
+  <div class="sec-head">
+    <h2><span class="t-en">Full Portals</span><span class="t-ar" style="display:none">المنصات الكاملة</span></h2>
+    <div class="sec-line"></div>
+    <span class="sec-tag">ابدأ هنا للتحليل العميق</span>
+  </div>
+  <p class="sec-desc t-en">Entire libraries of Quranic criticism — verse-by-verse errors from the Classical Arabic text, scholarly debunking, and historical context. Best for comprehensive study of the contradictions and wild claims above.</p>
+  <p class="sec-desc t-ar" style="display:none">مكتبات كاملة لنقد القرآن — الأخطاء آية بآية من النص العربي الفصحي، والدحض العلمي، والسياق التاريخي. أفضل مكان لدراسة شاملة للتناقضات والادعاءات الغريبة أعلاه.</p>
+
+  <div class="portal-grid">
+    <a href="https://wikiislam.net/wiki/Scientific_Errors_in_the_Quran" target="_blank" class="portal-card">
+      <span class="pi">🔬</span>
+      <div class="pt">
+        <div class="pn t-en">WikiIslam — Scientific Errors</div>
+        <div class="pn-ar">ويكي إسلام — الأخطاء العلمية</div>
+        <div class="pd">Every scientific mistake documented with sources</div>
+      </div>
+    </a>
+    <a href="https://wikiislam.net/wiki/Qur%27an,_Hadith_and_Scholars:Slavery" target="_blank" class="portal-card">
+      <span class="pi">⛓️</span>
+      <div class="pt">
+        <div class="pn t-en">WikiIslam — Slavery &amp; Concubines</div>
+        <div class="pn-ar">ويكي إسلام — الرق والسراري</div>
+        <div class="pd">Full verses on ownership of slaves</div>
+      </div>
+    </a>
+    <a href="https://www.answering-islam.org/Quran/Contradictions/" target="_blank" class="portal-card">
+      <span class="pi">⚔️</span>
+      <div class="pt">
+        <div class="pn t-en">Answering-Islam — Contradictions</div>
+        <div class="pn-ar">أنسِرِينغ إسلام — التناقضات</div>
+        <div class="pd">Hundreds of internal contradictions listed</div>
+      </div>
+    </a>
+    <a href="https://skepticsannotatedbible.com/quran/" target="_blank" class="portal-card">
+      <span class="pi">📖</span>
+      <div class="pt">
+        <div class="pn t-en">Skeptic's Annotated Quran</div>
+        <div class="pn-ar">القرآن المشكك فيه</div>
+        <div class="pd">Every error, cruelty &amp; absurdity marked</div>
+      </div>
+    </a>
+    <a href="https://quranx.com/" target="_blank" class="portal-card">
+      <span class="pi">🔍</span>
+      <div class="pt">
+        <div class="pn t-en">QuranX (for verification)</div>
+        <div class="pn-ar">قرآن إكس</div>
+        <div class="pd">Multiple translations &amp; verse search</div>
+      </div>
+    </a>
+    <a href="https://rationalwiki.org/wiki/Qur%27an" target="_blank" class="portal-card">
+      <span class="pi">📋</span>
+      <div class="pt">
+        <div class="pn t-en">RationalWiki — Quran</div>
+        <div class="pn-ar">ويكي العقلانية — القرآن</div>
+        <div class="pd">Comprehensive criticism &amp; errors</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <p class="mantra">الحق لا يخاف البحث</p>
+    <p>All verses taken directly from the <strong>Classical Arabic Quran (Hafs ʿan ʿĀṣim — Uthmani script)</strong>. No cherry-picking — the errors, contradictions and immoral teachings are plain in the original Arabic text. All links verified 2026.</p>
+  </div>
+</footer>
+
+<script>
+  // ── LANGUAGE TOGGLE ──
+  const sectionTabLabels = {
+    'tab-all':     ['All Issues',           'جميع المشكلات'],
+    'tab-science': ['Scientific Errors',    'الأخطاء العلمية'],
+    'tab-contradict': ['Internal Contradictions', 'التناقضات الداخلية'],
+    'tab-history':['Historical Blunders',   'الأخطاء التاريخية'],
+    'tab-moral':   ['Moral & Ethical Failures', 'الإخفاقات الأخلاقية'],
+    'tab-portals': ['Full Portals',         'المنصات الكاملة'],
+  };
+  const tradTabLabels = {
+    'trad-all':    ['All Verses',           'جميع الآيات'],
+    'trad-meccan': ['Meccan',               'مكية'],
+    'trad-medinan':['Medinan',              'مدنية'],
+  };
+
+  function setLang(lang, btn) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const ar = lang === 'ar';
+
+    document.querySelectorAll('.t-en').forEach(el => el.style.display = ar ? 'none' : '');
+    document.querySelectorAll('.t-ar').forEach(el => el.style.display = ar ? '' : 'none');
+
+    document.querySelectorAll('.card-title').forEach(el => el.style.display = ar ? 'none' : '');
+    document.querySelectorAll('.card-title-ar').forEach(el => el.style.display = ar ? 'block' : 'none');
+
+    document.querySelectorAll('.card-desc').forEach(el => el.style.display = ar ? 'none' : '');
+    document.querySelectorAll('.card-desc-ar').forEach(el => el.style.display = ar ? 'block' : 'none');
+
+    document.querySelectorAll('.sub-en').forEach(el => el.style.display = ar ? 'none' : '');
+    document.querySelectorAll('.sub-ar').forEach(el => el.style.display = ar ? '' : 'none');
+
+    document.querySelectorAll('.pn').forEach(el => el.style.display = ar ? 'none' : '');
+    document.querySelectorAll('.pn-ar').forEach(el => el.style.display = ar ? 'block' : 'none');
+
+    for (const [id, [en, a]] of Object.entries(sectionTabLabels)) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = ar ? a : en;
+    }
+    for (const [id, [en, a]] of Object.entries(tradTabLabels)) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = ar ? a : en;
+    }
+  }
+
+  // ── FILTER STATE ──
+  let activeSection = 'all';
+  let activeTrad    = 'all';
+
+  function applyFilters() {
+    let anyVisible = false;
+
+    document.querySelectorAll('.section').forEach(sec => {
+      const sMatch = activeSection === 'all' || sec.dataset.s === activeSection;
+
+      if (sec.dataset.s === 'portals') {
+        sec.classList.toggle('hidden', !sMatch);
+        if (sMatch) anyVisible = true;
+        return;
+      }
+
+      if (!sMatch) { sec.classList.add('hidden'); return; }
+
+      let secHasVisible = false;
+      sec.querySelectorAll('.card').forEach(card => {
+        const trads = (card.dataset.trad || '').split(' ');
+        const tMatch = activeTrad === 'all' || trads.includes(activeTrad);
+        card.classList.toggle('card-hidden', !tMatch);
+        if (tMatch) { secHasVisible = true; anyVisible = true; }
+      });
+
+      sec.classList.toggle('hidden', !secHasVisible);
+    });
+
+    document.getElementById('no-results').classList.toggle('visible', !anyVisible);
+  }
+
+  // ── SECTION FILTER ──
+  function filterSection(key, btn) {
+    document.querySelectorAll('.tabs:not(.trad-tabs) .tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    activeSection = key;
+    applyFilters();
+  }
+
+  // ── TRADITION FILTER ──
+  function filterTrad(key, btn) {
+    document.querySelectorAll('.trad-tabs .tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    activeTrad = key;
+    applyFilters();
+  }
+</script>
+
+</body>
+</html>
