@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quranic Contradictions Hub — لماذا القرآن كاذب</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&family=Tiro+Devanagari+Sans:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0c0905;
@@ -58,20 +58,81 @@
   }
   .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
 
-  /* LANG BAR */
+  /* LANG BAR + ETERNAL TRUTH NAV */
   .lang-bar {
-    display: flex; justify-content: flex-end; align-items: center;
-    padding: 14px 20px 0; position: relative; z-index: 10;
-    max-width: 1060px; margin: 0 auto;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 14px 20px 0; 
+    position: relative; 
+    z-index: 10;
+    max-width: 1060px; 
+    margin: 0 auto;
   }
-  .lang-label { font-size: 12px; color: var(--muted); margin-right: 10px; letter-spacing: 0.08em; }
-  .lang-toggle { display: flex; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .lang-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .lang-label { 
+    font-size: 12px; 
+    color: var(--muted); 
+    margin-right: 10px; 
+    letter-spacing: 0.08em; 
+  }
+  .lang-toggle { 
+    display: flex; 
+    border: 1px solid var(--border); 
+    border-radius: 3px; 
+    overflow: hidden; 
+  }
   .lang-btn {
-    padding: 5px 16px; font-family: 'Jost', sans-serif; font-size: 13px;
-    font-weight: 500; cursor: pointer; border: none;
-    background: var(--surface); color: var(--muted); transition: all 0.15s; letter-spacing: 0.05em;
+    padding: 5px 16px; 
+    font-family: 'Jost', sans-serif; 
+    font-size: 13px;
+    font-weight: 500; 
+    cursor: pointer; 
+    border: none;
+    background: var(--surface); 
+    color: var(--muted); 
+    transition: all 0.15s; 
+    letter-spacing: 0.05em;
   }
-  .lang-btn.active { background: var(--saffron); color: var(--bg); }
+  .lang-btn.active { 
+    background: var(--saffron); 
+    color: var(--bg); 
+  }
+
+  /* ETERNAL TRUTH BUTTON (matches saffron/dark theme perfectly) */
+  .eternal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--surface);
+    border: 1px solid var(--saffron);
+    color: var(--saffron);
+    padding: 9px 24px;
+    border-radius: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(245,166,35,0.15);
+  }
+  .eternal-btn:hover {
+    background: var(--saffron);
+    color: var(--bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245,166,35,0.35);
+  }
+  .eternal-btn .om-symbol {
+    font-family: 'Tiro Devanagari Sans', serif;
+    font-size: 22px;
+    line-height: 1;
+  }
 
   /* HEADER */
   header { text-align: center; padding: 48px 20px 40px; position: relative; }
@@ -184,26 +245,59 @@
   .pn-ar { font-family: 'Amiri', serif; font-size: 14px; color: var(--saffron); display: none; margin-bottom: 2px; direction: rtl; text-align: right; }
   .pd { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
 
-  /* FOOTER */
-  footer { border-top: 1px solid var(--border); padding: 28px 20px; text-align: center; color: var(--muted); font-size: 13px; position: relative; z-index: 1; line-height: 1.8; }
-  footer .mantra { font-family: 'Amiri', serif; font-size: 15px; color: var(--cream-dim); margin-bottom: 8px; direction: rtl; text-align: center; }
+  /* FOOTER + ETERNAL TRUTH BUTTON */
+  footer { 
+    border-top: 1px solid var(--border); 
+    padding: 28px 20px; 
+    text-align: center; 
+    color: var(--muted); 
+    font-size: 13px; 
+    position: relative; 
+    z-index: 1; 
+    line-height: 1.8; 
+  }
+  footer .mantra { 
+    font-family: 'Amiri', serif; 
+    font-size: 15px; 
+    color: var(--cream-dim); 
+    margin-bottom: 8px; 
+    direction: rtl; 
+    text-align: center; 
+  }
   footer strong { color: var(--saffron); font-weight: 500; }
+  .eternal-footer {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+  }
 
   @media (max-width: 600px) {
     .grid { grid-template-columns: 1fr; }
     .portal-grid { grid-template-columns: 1fr 1fr; }
     .sec-tag { display: none; }
     h1 { font-size: 30px; }
+    .lang-bar { flex-direction: column; gap: 12px; align-items: flex-start; }
+    .eternal-btn { width: 100%; justify-content: center; }
   }
 </style>
 </head>
 <body>
 
+<!-- TOP ETERNAL TRUTH BUTTON (integrated into lang-bar for perfect theme fit) -->
 <div class="lang-bar">
-  <span class="lang-label">Language / اللغة</span>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
-    <button class="lang-btn" onclick="setLang('ar',this)">العربية</button>
+  <!-- Left side: Eternal Truth button -->
+  <a href="eternal-truth.html" class="eternal-btn">
+    <span class="om-symbol">ॐ</span>
+    Eternal Truth
+  </a>
+
+  <!-- Right side: original language toggle -->
+  <div style="display:flex; align-items:center; gap:16px;">
+    <span class="lang-label">Language / اللغة</span>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
+      <button class="lang-btn" onclick="setLang('ar',this)">العربية</button>
+    </div>
   </div>
 </div>
 
@@ -676,6 +770,14 @@
   <div class="wrap">
     <p class="mantra">الحق لا يخاف البحث</p>
     <p>All verses taken directly from the <strong>Classical Arabic Quran (Hafs ʿan ʿĀṣim — Uthmani script)</strong>. No cherry-picking — the errors, contradictions and immoral teachings are plain in the original Arabic text. All links verified 2026.</p>
+    
+    <!-- BOTTOM ETERNAL TRUTH BUTTON -->
+    <div class="eternal-footer">
+      <a href="eternal-truth.html" class="eternal-btn">
+        <span class="om-symbol">ॐ</span>
+        Eternal Truth — Explore the Living Tradition
+      </a>
+    </div>
   </div>
 </footer>
 
