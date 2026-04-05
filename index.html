@@ -30,6 +30,21 @@
     min-height: 100vh;
     overflow-x: hidden;
     line-height: 1.6;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  /* Allow selection inside card content so users can copy scripture text */
+  .card-title, .card-desc, .card-meta, .badge {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+  /* Print-to-PDF protection */
+  @media print {
+    body { display: none !important; }
   }
   body::before {
     content: '';
@@ -711,6 +726,23 @@
     }
   }
 
+  // ── SOURCE PROTECTION ──
+  document.addEventListener('keydown', function(e) {
+    const ctrl = e.ctrlKey || e.metaKey;
+    // Ctrl/Cmd+U — view source
+    if (ctrl && e.key === 'u') { e.preventDefault(); return false; }
+    // Ctrl/Cmd+S — save page
+    if (ctrl && e.key === 's') { e.preventDefault(); return false; }
+    // Ctrl/Cmd+A — select all
+    if (ctrl && e.key === 'a') { e.preventDefault(); return false; }
+    // F12 — DevTools
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+    // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C — DevTools panels
+    if (ctrl && e.shiftKey && ['i','j','c','I','J','C'].includes(e.key)) {
+      e.preventDefault(); return false;
+    }
+  });
+
   // ── FILTER STATE ──
   let activeSection = 'all';
   let activeTrad    = 'all';
@@ -760,5 +792,7 @@
   }
 </script>
 
+</body>
+</html>
 </body>
 </html>
