@@ -22,6 +22,9 @@
     --white: #f5ede0;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* ── SOURCE PROTECTION ── */
+  @media print { body { display: none !important; } }
+
   body {
     background: var(--bg);
     color: var(--cream);
@@ -35,16 +38,12 @@
     -ms-user-select: none;
     user-select: none;
   }
-  /* Allow selection inside card content so users can copy scripture text */
-  .card-title, .card-desc, .card-meta, .badge {
+  /* Re-enable selection only on readable card content */
+  .card-title, .card-desc, .card-meta, .verse-text, .verse-ref {
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
-  }
-  /* Print-to-PDF protection */
-  @media print {
-    body { display: none !important; }
   }
   body::before {
     content: '';
@@ -726,23 +725,6 @@
     }
   }
 
-  // ── SOURCE PROTECTION ──
-  document.addEventListener('keydown', function(e) {
-    const ctrl = e.ctrlKey || e.metaKey;
-    // Ctrl/Cmd+U — view source
-    if (ctrl && e.key === 'u') { e.preventDefault(); return false; }
-    // Ctrl/Cmd+S — save page
-    if (ctrl && e.key === 's') { e.preventDefault(); return false; }
-    // Ctrl/Cmd+A — select all
-    if (ctrl && e.key === 'a') { e.preventDefault(); return false; }
-    // F12 — DevTools
-    if (e.key === 'F12') { e.preventDefault(); return false; }
-    // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C — DevTools panels
-    if (ctrl && e.shiftKey && ['i','j','c','I','J','C'].includes(e.key)) {
-      e.preventDefault(); return false;
-    }
-  });
-
   // ── FILTER STATE ──
   let activeSection = 'all';
   let activeTrad    = 'all';
@@ -775,6 +757,30 @@
     document.getElementById('no-results').classList.toggle('visible', !anyVisible);
   }
 
+  // ── RIGHT-CLICK PROTECTION ──
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault(); return false;
+  });
+
+  // ── KEYBOARD PROTECTION ──
+  document.addEventListener('keydown', function(e) {
+    const ctrl = e.ctrlKey || e.metaKey;
+    // Ctrl/Cmd+U (view-source), Ctrl/Cmd+S (save), Ctrl/Cmd+A (select all)
+    if (ctrl && (e.key === 'u' || e.key === 'U' ||
+                 e.key === 's' || e.key === 'S' ||
+                 e.key === 'a' || e.key === 'A')) {
+      e.preventDefault(); return false;
+    }
+    // F12
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+    // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools)
+    if (ctrl && e.shiftKey && (e.key === 'I' || e.key === 'i' ||
+                                e.key === 'J' || e.key === 'j' ||
+                                e.key === 'C' || e.key === 'c')) {
+      e.preventDefault(); return false;
+    }
+  });
+
   // ── SECTION FILTER ──
   function filterSection(key, btn) {
     document.querySelectorAll('.tabs:not(.trad-tabs) .tab').forEach(t => t.classList.remove('active'));
@@ -792,7 +798,5 @@
   }
 </script>
 
-</body>
-</html>
 </body>
 </html>
