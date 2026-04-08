@@ -130,7 +130,7 @@
   .grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 14px; }
   .card {
     background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 20px 20px 16px;
-    text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: block; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     position: relative; overflow: hidden;
   }
   .card.card-hidden { display: none; }
@@ -140,15 +140,35 @@
   }
   .card:hover { border-color: var(--accent,var(--saffron)); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.5); }
   .card:hover::after { transform: scaleX(1); }
+  
   .card-icon { font-size: 22px; margin-bottom: 9px; display: block; line-height: 1; }
   .card-verse-ar { font-family: 'Amiri', serif; font-size: 18px; color: var(--saffron); margin-bottom: 8px; line-height: 1.4; direction: rtl; text-align: right; }
   .card-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 3px; line-height: 1.2; }
   .card-title-ar { font-family: 'Amiri', serif; font-size: 18px; color: var(--saffron); margin-bottom: 3px; display: none; direction: rtl; text-align: right; }
   .card-source { font-size: 11px; color: var(--accent,var(--saffron)); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-bottom: 4px; }
-  .card-ref { font-size: 10.5px; color: #e07070; font-weight: 600; margin-bottom: 9px; }
-  .card-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
-  .card-desc-ar { font-family: 'Jost', sans-serif; font-size: 14.5px; font-weight: 400; color: var(--muted); line-height: 1.7; display: none; direction: rtl; text-align: right; }
-  .badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+  
+  /* Link System Styles */
+  .card-links { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; position: relative; z-index: 2; }
+  .card-link {
+    font-size: 11px; color: var(--accent); font-weight: 600; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.12); padding: 4px 10px; border-radius: 4px;
+    background: rgba(0,0,0,0.2); transition: all 0.2s ease; letter-spacing: 0.05em; display: inline-block;
+  }
+  .card-link:hover {
+    background: var(--accent); color: var(--bg); border-color: var(--accent); box-shadow: 0 0 8px rgba(255,255,255,0.1);
+  }
+  .inline-link {
+    color: var(--accent); text-decoration: none; font-weight: 500;
+    border-bottom: 1px dashed var(--accent); transition: all 0.2s ease; padding-bottom: 1px; position: relative; z-index: 2;
+  }
+  .inline-link:hover {
+    color: var(--white); border-bottom-style: solid; background: rgba(255,255,255,0.05); border-radius: 2px;
+  }
+
+  .card-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; position: relative; z-index: 1; }
+  .card-desc-ar { font-family: 'Jost', sans-serif; font-size: 14.5px; font-weight: 400; color: var(--muted); line-height: 1.7; display: none; direction: rtl; text-align: right; position: relative; z-index: 1; }
+  
+  .badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; position: relative; z-index: 1; }
   .badge { font-size: 10.5px; padding: 2px 8px; border-radius: 2px; letter-spacing: 0.05em; }
   .b-eng  { background: rgba(237,224,200,0.07); color: #9e8464; border: 1px solid rgba(237,224,200,0.15); }
   .b-ar   { background: rgba(26,122,110,0.12);  color: #4abaaa; border: 1px solid rgba(26,122,110,0.28); }
@@ -212,8 +232,8 @@
 <div class="wrap">
 
 <div class="notice">
-  <span class="t-en"><strong>No apologetics. No taqiyya.</strong> Over 80 undeniable errors, contradictions, and immoral laws quoted directly from the <strong>Classical Arabic Quran</strong>. Click any card to read the direct source on <strong>Quran.com</strong>. The perfect, uncreated word of an omniscient being would not contain ancient Greek embryology, mathematical failures, or flat-earth cosmology.</span>
-  <span class="t-ar" style="display:none"><strong>بدون ترقيع أو تبريرات.</strong> أكثر من 80 خطأ، تناقض، وقانون غير إنساني مقتبسة مباشرة من النص الأصلي للقرآن. اضغط على أي بطاقة للتحقق من المصدر عبر <strong>Quran.com</strong>. الإله الكلي المعرفة لا يمكن أن يخطئ في الحساب، أو ينقل أساطير يونانية قديمة، أو يعتقد أن الأرض مسطحة.</span>
+  <span class="t-en"><strong>No apologetics. No taqiyya.</strong> Over 90 undeniable errors, contradictions, and immoral laws quoted directly from the <strong>Classical Arabic Quran</strong>. Click any card link to read the direct source on <strong>Quran.com</strong>. The perfect, uncreated word of an omniscient being would not contain ancient Greek embryology, mathematical failures, or flat-earth cosmology.</span>
+  <span class="t-ar" style="display:none"><strong>بدون ترقيع أو تبريرات.</strong> أكثر من 90 خطأ، تناقض، وقانون غير إنساني مقتبسة مباشرة من النص الأصلي للقرآن. اضغط على أي رابط للتحقق من المصدر عبر <strong>Quran.com</strong>. الإله الكلي المعرفة لا يمكن أن يخطئ في الحساب، أو ينقل أساطير يونانية قديمة، أو يعتقد أن الأرض مسطحة.</span>
 </div>
 
 <!-- FILTER ROW 1 -->
@@ -251,174 +271,221 @@
   <p class="sec-desc t-ar" style="display:none">يقدم القرآن خرافات الشرق الأوسط في القرن السابع والمفاهيم اليونانية الخاطئة على أنها حقائق إلهية مطلقة. لا يمكن لأي "تفسير مجازي" حديث أن يغير المعنى الواضح والصريح للنص الأساسي.</p>
   <div class="grid">
 
-    <a href="https://quran.com/18/86" target="_blank" class="card a-red" data-trad="meccan">
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🌅</span><div class="card-verse-ar">وَجَدَهَا تَغْرُبُ فِي عَيْنٍ حَمِئَةٍ</div>
       <div class="card-title">Sun sets in a muddy spring</div><div class="card-title-ar">الشمس تغرب في طين</div>
-      <div class="card-source">١٨:٨٦ (الكهف)</div><div class="card-ref">Quran 18:86 (View source)</div>
+      <div class="card-source">١٨:٨٦ (الكهف)</div>
+      <div class="card-links"><a href="https://quran.com/18/86" target="_blank" class="card-link">Quran 18:86</a></div>
       <p class="card-desc">Apologists claim Dhul-Qarnayn "only saw it as if" it set there. Yet the Arabic says "wajadaha" (he found it) setting in a literal, physical spring ('ayn hami'ah). Tafsir al-Tabari and early scholars confirmed the sun physically drops into muddy water.</p>
       <p class="card-desc-ar">يحاول المدافعون الزعم بأن ذو القرنين "رآها فقط وكأنها تغرب". لكن النص يقول صراحة "وَجَدَهَا" تغرب في عين طينية (حمئة). وقد أكد الطبري والمفسرون الأوائل أن الشمس تغطس فعلياً في الطين. هذا تصور بدائي ومباشر للأرض المسطحة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/88/20" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">📏</span><div class="card-verse-ar">وَإِلَى الْأَرْضِ كَيْفَ سُطِحَتْ</div>
       <div class="card-title">Earth spread flat</div><div class="card-title-ar">الأرض مسطحة</div>
-      <div class="card-source">٨٨:٢٠ (الغاشية)</div><div class="card-ref">Quran 88:20 (View source)</div>
+      <div class="card-source">٨٨:٢٠ (الغاشية)</div>
+      <div class="card-links"><a href="https://quran.com/88/20" target="_blank" class="card-link">Quran 88:20</a></div>
       <p class="card-desc">The Arabic 'sutihat' explicitly means spread flat like a carpet. Tafsir al-Jalalayn unequivocally states: "This indicates the earth is flat... which refutes the astronomers who say it is a sphere." The text directly contradicts a spherical globe.</p>
       <p class="card-desc-ar">كلمة "سُطِحَتْ" تعني مُهدت وانبسطت. وقد صرح تفسير الجلالين بوضوح: "هذا يدل على أن الأرض مسطحة... وهو يرد على علماء الفلك الذين يقولون إنها كرة". النص يتعارض تماماً مع كروية الأرض.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/23/14" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🧬</span><div class="card-verse-ar">فَخَلَقْنَا الْعَلَقَةَ مُضْغَةً فَخَلَقْنَا الْمُضْغَةَ عِظَامًا</div>
       <div class="card-title">Greek Embryology</div><div class="card-title-ar">علم الأجنة اليوناني</div>
-      <div class="card-source">٢٣:١٢-١٤ (المؤمنون)</div><div class="card-ref">Quran 23:12-14 (View source)</div>
+      <div class="card-source">٢٣:١٢-١٤ (المؤمنون)</div>
+      <div class="card-links"><a href="https://quran.com/23/12" target="_blank" class="card-link">Quran 23:12-14</a></div>
       <p class="card-desc">Claims a fetus becomes a "blood clot" (alaqah), then a chewed lump, then bones, which are THEN clothed in flesh. Modern embryology proves flesh and bones develop simultaneously (mesoderm). The Quran perfectly copied the flawed 2nd-century medical texts of Galen.</p>
       <p class="card-desc-ar">يدعي النص أن الجنين يتحول إلى "علقة"، ثم "مضغة"، ثم تُخلق العظام، وبعدها تُكسى العظام باللحم. لكن علم الأجنة الحديث يثبت أن العضلات والعظام تتشكل في نفس الوقت. القرآن نسخ أخطاء الطبيب اليوناني جالينوس حرفياً.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/78/7" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🏔️</span><div class="card-verse-ar">وَالْجِبَالَ أَوْتَادًا</div>
       <div class="card-title">Mountains stop earthquakes</div><div class="card-title-ar">الجبال كأوتاد للأرض</div>
-      <div class="card-source">٧٨:٦-٧ ، ١٦:١٥</div><div class="card-ref">Quran 78:6-7 (View source)</div>
+      <div class="card-source">٧٨:٦-٧ ، ١٦:١٥</div>
+      <div class="card-links">
+        <a href="https://quran.com/78/6" target="_blank" class="card-link">Quran 78:6-7</a>
+        <a href="https://quran.com/16/15" target="_blank" class="card-link">Quran 16:15</a>
+      </div>
       <p class="card-desc">Claims mountains are "pegs" (awtad) driven into the earth to stop it from shaking. Geology proves the exact opposite: mountains are created by colliding tectonic plates, which are the *direct cause* of earthquakes.</p>
       <p class="card-desc-ar">يدعي القرآن أن الجبال وُضعت كـ "أوتاد" لتثبيت الأرض ومنعها من الاهتزاز. علم الجيولوجيا يثبت العكس تماماً: الجبال تتشكل نتيجة تصادم الصفائح التكتونية، وهي نفس العملية التي تسبب الزلازل أساساً.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/21/32" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🌍</span><div class="card-verse-ar">وَجَعَلْنَا السَّمَاءَ سَقْفًا مَحْفُوظًا</div>
       <div class="card-title">Solid sky dome</div><div class="card-title-ar">السماء سقف صلب</div>
-      <div class="card-source">٢١:٣٢ ، ٣٤:٩</div><div class="card-ref">Quran 21:32 (View source)</div>
-      <p class="card-desc">The Quran presents the sky not as a gaseous atmosphere, but as a solid "protected ceiling" (saqfan) that Allah holds up, and warns that literal pieces of it could break off and fall on people (34:9). Vacuum and gas cannot "fall".</p>
-      <p class="card-desc-ar">يصف القرآن السماء بأنها "سقف محفوظ" صلب يمسكه الله، ويحذر في آيات أخرى من سقوط قطع منها (كسفاً) على الناس. من الناحية العلمية، الفضاء والغازات لا يمكن أن تسقط كقطع صلبة.</p>
+      <div class="card-source">٢١:٣٢ ، ٣٤:٩</div>
+      <div class="card-links">
+        <a href="https://quran.com/21/32" target="_blank" class="card-link">Quran 21:32</a>
+        <a href="https://quran.com/34/9" target="_blank" class="card-link">Quran 34:9</a>
+      </div>
+      <p class="card-desc">The Quran presents the sky not as a gaseous atmosphere, but as a solid "protected ceiling" (saqfan) that Allah holds up, and warns that literal pieces of it could break off and fall on people (<a href="https://quran.com/34/9" target="_blank" class="inline-link">34:9</a>). Vacuum and gas cannot "fall".</p>
+      <p class="card-desc-ar">يصف القرآن السماء بأنها "سقف محفوظ" صلب يمسكه الله، ويحذر في آيات أخرى من سقوط قطع منها (<a href="https://quran.com/34/9" target="_blank" class="inline-link">34:9</a>) على الناس. من الناحية العلمية، الفضاء والغازات لا يمكن أن تسقط كقطع صلبة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/36/38" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🪐</span><div class="card-verse-ar">وَالشَّمْسُ تَجْرِي لِمُسْتَقَرٍّ لَهَا</div>
       <div class="card-title">Geocentric universe</div><div class="card-title-ar">مركزية الأرض</div>
-      <div class="card-source">٣٦:٣٨-٤٠ (يس)</div><div class="card-ref">Quran 36:38-40 (View source)</div>
+      <div class="card-source">٣٦:٣٨-٤٠ (يس)</div>
+      <div class="card-links"><a href="https://quran.com/36/38" target="_blank" class="card-link">Quran 36:38-40</a></div>
       <p class="card-desc">The sun "runs its course" and chases the moon within a dome (falak) over a stationary Earth. Heliocentrism proves the Earth orbits the Sun, not the other way around. The Quran completely misses Earth's rotation and orbit.</p>
       <p class="card-desc-ar">يصف النص الشمس بأنها تجري وتتحرك في مدار حول أرض ثابتة وتطارد القمر. علم الفلك الحديث أثبت أن الأرض هي التي تدور حول الشمس وحول نفسها، وهو ما يجهله القرآن تماماً في تصوره الكوني.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/54/1" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🌙</span><div class="card-verse-ar">اقْتَرَبَتِ السَّاعَةُ وَانْشَقَّ الْقَمَرُ</div>
       <div class="card-title">Moon split in half</div><div class="card-title-ar">انشقاق القمر</div>
-      <div class="card-source">٥٤:١-٢ (القمر)</div><div class="card-ref">Quran 54:1-2 (View source)</div>
+      <div class="card-source">٥٤:١-٢ (القمر)</div>
+      <div class="card-links"><a href="https://quran.com/54/1" target="_blank" class="card-link">Quran 54:1-2</a></div>
       <p class="card-desc">Claims the moon was physically cloven in two pieces. There is zero historical record from Roman, Persian, Indian, or Chinese astronomers of this catastrophic event, which would have severely disrupted Earth's gravity and tides.</p>
       <p class="card-desc-ar">الادعاء بانشقاق القمر إلى نصفين ليس له أي سند علمي. لا يوجد أي سجل فلكي أو تاريخي لدى الرومان أو الفرس أو الصينيين يوثق هذا الحدث الكارثي الذي كان سيؤثر على الجاذبية وحركة المد والجزر بشكل مدمر.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/41/9" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🌌</span><div class="card-verse-ar">ثُمَّ اسْتَوَىٰ إِلَى السَّمَاءِ وَهِيَ دُخَانٌ</div>
       <div class="card-title">Earth before the Universe</div><div class="card-title-ar">الأرض قبل الكون</div>
-      <div class="card-source">٤١:٩-١٢ (فصلت)</div><div class="card-ref">Quran 41:9-12 (View source)</div>
+      <div class="card-source">٤١:٩-١٢ (فصلت)</div>
+      <div class="card-links"><a href="https://quran.com/41/9" target="_blank" class="card-link">Quran 41:9-12</a></div>
       <p class="card-desc">Explicitly states the Earth was fully formed and populated with food (Days 1-4) *before* (thumma) Allah turned to the sky to create the stars. The universe is 13.8 billion years old; Earth is only 4.5 billion years old. Completely backward.</p>
       <p class="card-desc-ar">الآيات تذكر بوضوح أن الأرض خُلقت ووُفرت فيها الأقوات أولاً، "ثُمَّ" التفت الله لخلق السماء والنجوم. علمياً، الكون والنجوم أقدم من الأرض بمليارات السنين. الترتيب المذكور هنا معكوس تماماً.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/37/6" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🌠</span><div class="card-verse-ar">وَحِفْظًا مِنْ كُلِّ شَيْطَانٍ مَارِدٍ</div>
       <div class="card-title">Stars thrown at Jinn</div><div class="card-title-ar">رمي الشياطين بالنجوم</div>
-      <div class="card-source">٣٧:٦-٨ (الصافات)</div><div class="card-ref">Quran 37:6-8 (View source)</div>
+      <div class="card-source">٣٧:٦-٨ (الصافات)</div>
+      <div class="card-links"><a href="https://quran.com/37/6" target="_blank" class="card-link">Quran 37:6-8</a></div>
       <p class="card-desc">Meteors are described as "lamps" (masabih) acting as literal physical missiles thrown at invisible demons trying to eavesdrop on heaven. This is pure ancient mythology; meteors are simply rock and ice burning in the atmosphere.</p>
       <p class="card-desc-ar">يصف القرآن النجوم والشهب بأنها مقذوفات حقيقية تُرمى لضرب الشياطين التي تحاول استراق السمع. هذه أسطورة قديمة تتجاهل حقيقة أن الشهب مجرد صخور فضائية تحترق عند دخولها الغلاف الجوي للأرض.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/27/18" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🐜</span><div class="card-verse-ar">قَالَتْ نَمْلَةٌ يَا أَيُّهَا النَّمْلُ ادْخُلُوا مَسَاكِنَكُمْ</div>
       <div class="card-title">Talking Ants</div><div class="card-title-ar">تحدث النمل</div>
-      <div class="card-source">٢٧:١٨-١٩ (النمل)</div><div class="card-ref">Quran 27:18-19 (View source)</div>
+      <div class="card-source">٢٧:١٨-١٩ (النمل)</div>
+      <div class="card-links"><a href="https://quran.com/27/18" target="_blank" class="card-link">Quran 27:18-19</a></div>
       <p class="card-desc">An ant literally speaks complex vocabulary ("qalat namlatun"), warning others about Solomon's army so they aren't crushed. Ants do not have vocal cords or acoustic language; they communicate chemically via pheromones.</p>
       <p class="card-desc-ar">الآية تذكر أن نملة تحدثت بكلام بشري معقد لتحذر قومها من جيش سليمان. بيولوجياً، النمل لا يملك حبالاً صوتية ولا يتواصل بالصوتيات إطلاقاً، بل يتواصل كيميائياً عن طريق إفراز الفرمونات فقط.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/16/79" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🦅</span><div class="card-verse-ar">مَا يُمْسِكُهُنَّ إِلَّا اللَّهُ</div>
       <div class="card-title">Birds fly by magic</div><div class="card-title-ar">تحليق الطيور بالسحر</div>
-      <div class="card-source">١٦:٧٩ (النحل)</div><div class="card-ref">Quran 16:79 (View source)</div>
+      <div class="card-source">١٦:٧٩ (النحل)</div>
+      <div class="card-links"><a href="https://quran.com/16/79" target="_blank" class="card-link">Quran 16:79</a></div>
       <p class="card-desc">"None holds them up except Allah." The author demonstrates zero understanding of physical laws like lift, drag, and aerodynamics, presenting bird flight as an ongoing, literal supernatural intervention.</p>
       <p class="card-desc-ar">الآية تتجاهل قوانين الفيزياء والديناميكا الهوائية كالرفع ومقاومة الهواء، وتنسب قدرة الطيور على التحليق والبقاء في الجو إلى تدخل إلهي سحري مباشر يمنعها من السقوط.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/16/66" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🥛</span><div class="card-verse-ar">مِنْ بَيْنِ فَرْثٍ وَدَمٍ لَبَنًا خَالِصًا</div>
       <div class="card-title">Milk from blood & excrement</div><div class="card-title-ar">تكون الحليب</div>
-      <div class="card-source">١٦:٦٦ (النحل)</div><div class="card-ref">Quran 16:66 (View source)</div>
+      <div class="card-source">١٦:٦٦ (النحل)</div>
+      <div class="card-links"><a href="https://quran.com/16/66" target="_blank" class="card-link">Quran 16:66</a></div>
       <p class="card-desc">Claims milk is produced "between excretion (farth) and blood (dam)." This is biologically illiterate. Milk is synthesized by specialized cells inside the mammary glands, completely bypassing the digestive tract's excrement.</p>
       <p class="card-desc-ar">الآية تدعي أن الحليب يتكون بين الفضلات (الفرث) والدم في الجهاز الهضمي. هذا خطأ بيولوجي واضح، فالحليب يُنتج من خلايا متخصصة داخل الغدد الثديية ولا يمر بفضلات المعدة على الإطلاق.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/22/46" target="_blank" class="card a-red" data-trad="medinan">
+    </div>
+
+    <div class="card a-red" data-trad="medinan">
       <span class="card-icon">🧠</span><div class="card-verse-ar">فَتَكُونَ لَهُمْ قُلُوبٌ يَعْقِلُونَ بِهَا</div>
       <div class="card-title">The Heart thinks, not the Brain</div><div class="card-title-ar">التفكير بالقلب بدلاً من الدماغ</div>
-      <div class="card-source">٢٢:٤٦ (الحج)</div><div class="card-ref">Quran 22:46 (View source)</div>
+      <div class="card-source">٢٢:٤٦ (الحج)</div>
+      <div class="card-links"><a href="https://quran.com/22/46" target="_blank" class="card-link">Quran 22:46</a></div>
       <p class="card-desc">"Have they not hearts by which to reason?" The Quran continually assigns cognitive thought, reasoning, and memory to the physical heart inside the chest (sudur). The brain is never mentioned. This is a classic ancient Egyptian/Greek scientific blunder.</p>
       <p class="card-desc-ar">القرآن ينسب التفكير والوعي والإدراك إلى القلب العضوي الموجود في الصدر، ولا يذكر الدماغ أو وظيفته العصبية على الإطلاق. هذا خطأ طبي وتشريحي كان شائعاً جداً في الحضارات القديمة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/39/5" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🌓</span><div class="card-verse-ar">يُكَوِّرُ اللَّيْلَ عَلَى النَّهَارِ</div>
       <div class="card-title">Night/Day wrap over Earth</div><div class="card-title-ar">تكور الليل والنهار</div>
-      <div class="card-source">٣٩:٥ (الزمر)</div><div class="card-ref">Quran 39:5 (View source)</div>
+      <div class="card-source">٣٩:٥ (الزمر)</div>
+      <div class="card-links"><a href="https://quran.com/39/5" target="_blank" class="card-link">Quran 39:5</a></div>
       <p class="card-desc">"He wraps (yukawwiru) the night over the day..." Apologists desperately claim this proves a spherical earth, but linguistically it describes day and night as two physical veils/blankets being actively pulled over a stationary object, ignoring the Earth's simple rotation.</p>
       <p class="card-desc-ar">استخدام فعل "يُكَوِّرُ" يصور الليل والنهار كأغطية مادية تُلف وتسحب فوق أرض ثابتة. هذا الوصف يتجاهل الحقيقة العلمية البسيطة وهي أن تعاقب الليل والنهار يحدث طبيعياً بسبب دوران الأرض حول نفسها.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/2/187" target="_blank" class="card a-red" data-trad="medinan">
+    </div>
+
+    <div class="card a-red" data-trad="medinan">
       <span class="card-icon">🧊</span><div class="card-verse-ar">حَتَّىٰ يَتَبَيَّنَ لَكُمُ الْخَيْطُ الْأَبْيَضُ مِنَ الْخَيْطِ الْأَسْوَدِ</div>
       <div class="card-title">Fasting impossible at poles</div><div class="card-title-ar">استحالة الصيام قطبياً</div>
-      <div class="card-source">٢:١٨٧ (البقرة)</div><div class="card-ref">Quran 2:187 (View source)</div>
+      <div class="card-source">٢:١٨٧ (البقرة)</div>
+      <div class="card-links"><a href="https://quran.com/2/187" target="_blank" class="card-link">Quran 2:187</a></div>
       <p class="card-desc">Strictly commands fasting from dawn until sunset. Near the poles (Norway, Alaska), daylight lasts for months continuously. A universal, omniscient God would not issue an obligatory geographical law that literally causes starvation and death.</p>
       <p class="card-desc-ar">النص يربط وقت الصيام بشروق الشمس وغروبها فقط. في المناطق القريبة من القطبين يستمر النهار لعدة أشهر متواصلة. لو كان هذا التشريع إلهياً وعالمياً، لما وضع قانوناً جغرافياً مستحيلاً يؤدي حتماً للموت جوعاً.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/51/49" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🧬</span><div class="card-verse-ar">وَمِنْ كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ</div>
       <div class="card-title">Everything created in pairs?</div><div class="card-title-ar">كل الكائنات أزواج؟</div>
-      <div class="card-source">٥١:٤٩ (الذاريات)</div><div class="card-ref">Quran 51:49 (View source)</div>
+      <div class="card-source">٥١:٤٩ (الذاريات)</div>
+      <div class="card-links"><a href="https://quran.com/51/49" target="_blank" class="card-link">Quran 51:49</a></div>
       <p class="card-desc">"And of all things We created two mates..." This ancient binary assumption ignores vast swaths of biology: asexual reproduction in bacteria, parthenogenesis in certain reptiles, and hermaphroditic species. A divine creator of microbes would know this.</p>
       <p class="card-desc-ar">"وَمِن كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ". هذا الافتراض القديم يتجاهل آلاف الكائنات التي تتكاثر لاجنسياً مثل البكتيريا، أو كائنات التوالد العذري (بعض الزواحف)، أو الكائنات الخنثى. خالق الطبيعة الحقيقي لن يقع في هذا التعميم الخاطئ.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/6/97" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🧭</span><div class="card-verse-ar">وَهُوَ الَّذِي جَعَلَ لَكُمُ النُّجُومَ لِتَهْتَدُوا بِهَا</div>
       <div class="card-title">Anthropocentric Cosmology</div><div class="card-title-ar">مركزية الإنسان الكونية</div>
-      <div class="card-source">٦:٩٧ (الأنعام)</div><div class="card-ref">Quran 6:97 (View source)</div>
+      <div class="card-source">٦:٩٧ (الأنعام)</div>
+      <div class="card-links"><a href="https://quran.com/6/97" target="_blank" class="card-link">Quran 6:97</a></div>
       <p class="card-desc">"And it is He who placed for you the stars that you may be guided by them in darkness..." The Quran views massive fusion reactors billions of light-years away as mere navigational streetlights created specifically to serve humans on Earth.</p>
       <p class="card-desc-ar">القرآن يرى النجوم والمجرات التي تبعد عنا مليارات السنين الضوئية مجرد "مصابيح" خُلقت خصيصاً ليستخدمها البشر في الملاحة. نظرة بدائية تجعل الإنسان محوراً للكون بشكل مبالغ فيه وتتجاهل طبيعة النجوم الحقيقية.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/6/38" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🐆</span><div class="card-verse-ar">إِلَّا أُمَمٌ أَمْثَالُكُمْ</div>
       <div class="card-title">All animals form nations</div><div class="card-title-ar">الحيوانات أمم أمثالنا</div>
-      <div class="card-source">٦:٣٨ (الأنعام)</div><div class="card-ref">Quran 6:38 (View source)</div>
+      <div class="card-source">٦:٣٨ (الأنعام)</div>
+      <div class="card-links"><a href="https://quran.com/6/38" target="_blank" class="card-link">Quran 6:38</a></div>
       <p class="card-desc">"There is no creature on earth or bird... except they are communities like you." Many animal species are exclusively solitary (e.g., jaguars, polar bears, certain spiders) and absolutely do not form communities or nations. A sweeping biological generalization.</p>
       <p class="card-desc-ar">الآية تعمم وتقول إن كل الحيوانات والطيور تعيش في مجتمعات وأمم مثل البشر. علم الحيوان يثبت أن العديد من الكائنات (مثل الدببة القطبية والنمور) كائنات انعزالية تماماً ولا تشكل أي مجتمعات أو أمم.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/22/65" target="_blank" class="card a-red" data-trad="medinan">
+    </div>
+
+    <div class="card a-red" data-trad="medinan">
       <span class="card-icon">🧱</span><div class="card-verse-ar">وَيُمْسِكُ السَّمَاءَ أَن تَقَعَ عَلَى الْأَرْضِ</div>
       <div class="card-title">Invisible barrier holds the sky</div><div class="card-title-ar">الإمساك بالسماء كي لا تقع</div>
-      <div class="card-source">٢٢:٦٥ (الحج)</div><div class="card-ref">Quran 22:65 (View source)</div>
-      <p class="card-desc">"He holds the sky from falling on the earth..." Claims the sky is a tangible, solid object that would crash into the Earth if God didn't actively hold it up. Gravity pulls objects to Earth; the sky is gas and vacuum, it cannot "fall".</p>
+      <div class="card-source">٢٢:٦٥ (الحج)</div>
+      <div class="card-links"><a href="https://quran.com/22/65" target="_blank" class="card-link">Quran 22:65</a></div>
+      <p class="card-desc">"He holds the sky from falling on the earth..." Claims the sky is a tangible, solid object that would crash into the Earth if God didnt actively hold it up. Gravity pulls objects to Earth; the sky is gas and vacuum, it cannot "fall".</p>
       <p class="card-desc-ar">"وَيُمْسِكُ السَّمَاءَ أَن تَقَعَ عَلَى الْأَرْضِ..." يتعامل القرآن مع السماء ككيان صلب مادي يمكن أن يسقط على الأرض لولا إمساك الله له. علمياً، السماء عبارة عن غازات وفراغ، ولا يوجد شيء مادي يمكن أن "يسقط".</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/55/19" target="_blank" class="card a-red" data-trad="meccan">
+    </div>
+
+    <div class="card a-red" data-trad="meccan">
       <span class="card-icon">🌊</span><div class="card-verse-ar">بَيْنَهُمَا بَرْزَخٌ لَّا يَبْغِيَانِ</div>
       <div class="card-title">Fresh/Saltwater do not mix</div><div class="card-title-ar">عدم اختلاط الماء العذب والمالح</div>
-      <div class="card-source">٥٥:١٩-٢٠ (الرحمن)</div><div class="card-ref">Quran 55:19-20 (View source)</div>
+      <div class="card-source">٥٥:١٩-٢٠ (الرحمن)</div>
+      <div class="card-links"><a href="https://quran.com/55/19" target="_blank" class="card-link">Quran 55:19-20</a></div>
       <p class="card-desc">Claims a rigid, impenetrable barrier (barzakh) prevents salt and fresh water from mixing. Science and oceanography prove this false; estuaries exist precisely where fresh and saltwater mix continuously, creating brackish water ecosystems.</p>
       <p class="card-desc-ar">"بَيْنَهُمَا بَرْزَخٌ لَّا يَبْغِيَانِ". يدعي القرآن وجود حاجز مادي يمنع اختلاط المياه العذبة بالمالحة. علم المحيطات يثبت خطأ ذلك، حيث تختلط المياه باستمرار في مصبات الأنهار لتكوين مياه مسوسية (Brackish).</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
-    <a href="https://quran.com/24/43" target="_blank" class="card a-red" data-trad="medinan">
+    </div>
+
+    <div class="card a-red" data-trad="medinan">
       <span class="card-icon">🧊</span><div class="card-verse-ar">وَيُنَزِّلُ مِنَ السَّمَاءِ مِن جِبَالٍ فِيهَا مِن بَرَدٍ</div>
       <div class="card-title">Hail from mountains in the sky</div><div class="card-title-ar">البَرَد يسقط من جبال سماوية</div>
-      <div class="card-source">٢٤:٤٣ (النور)</div><div class="card-ref">Quran 24:43 (View source)</div>
+      <div class="card-source">٢٤:٤٣ (النور)</div>
+      <div class="card-links"><a href="https://quran.com/24/43" target="_blank" class="card-link">Quran 24:43</a></div>
       <p class="card-desc">"He sends down from the sky, from mountains within it, hail." Assumes literal physical mountains made of ice exist up in the sky where hail falls from. Hail actually forms inside cumulonimbus clouds through updrafts freezing water droplets.</p>
       <p class="card-desc-ar">"وَيُنَزِّلُ مِنَ السَّمَاءِ مِن جِبَالٍ فِيهَا مِن بَرَدٍ". يفترض النص وجود جبال مادية من الجليد في السماء يتساقط منها البَرَد. علمياً، البرد يتشكل داخل السحب الركامية بسبب التيارات الهوائية الصاعدة، وليس من جبال سماوية.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Science</span></div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -430,176 +497,426 @@
   <p class="sec-desc t-ar" style="display:none">النص الكامل والمثالي لا يمكن أن يحتوي على تناقضات رياضية أو تاريخية. يعتمد رجال الدين على قاعدة "النسخ" لتبرير التناقضات، لكن الحقائق والتسلسل الزمني والأحداث التاريخية لا يمكن "نسخها".</p>
   <div class="grid">
 
-    <a href="https://quran.com/41/9" target="_blank" class="card a-purple" data-trad="meccan">
+    <!-- New Contradiction 1 -->
+    <div class="card a-purple" data-trad="medinan">
+      <span class="card-icon">🎭</span><div class="card-verse-ar">قُلْ كُلٌّ مِّنْ عِندِ اللَّهِ</div>
+      <div class="card-title">Is Evil from God or from Man?</div><div class="card-title-ar">هل الشر من الله أم من الإنسان؟</div>
+      <div class="card-source">٤:٧٨ ضد ٤:٧٩</div>
+      <div class="card-links">
+        <a href="https://quran.com/4/78" target="_blank" class="card-link">Quran 4:78</a>
+        <a href="https://quran.com/4/79" target="_blank" class="card-link">Quran 4:79</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/4/78" target="_blank" class="inline-link">4:78</a> explicitly says "All things [good and evil] are from Allah." The VERY NEXT verse, <a href="https://quran.com/4/79" target="_blank" class="inline-link">4:79</a>, contradicts this completely, stating "Whatever comes to you of good is from Allah, but whatever comes to you of evil is from yourself." A literal back-to-back theological paradox.</p>
+      <p class="card-desc-ar">الآية <a href="https://quran.com/4/78" target="_blank" class="inline-link">4:78</a> تقول بوضوح "قُلْ كُلٌّ مِّنْ عِندِ اللَّهِ" (الحسنة والسيئة). وفي الآية التي تليها مباشرة <a href="https://quran.com/4/79" target="_blank" class="inline-link">4:79</a> تقول "وَمَا أَصَابَكَ مِن سَيِّئَةٍ فَمِن نَّفْسِكَ". تناقض حرفي متتالي في تحديد المصدر الفعلي للشر.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 2 -->
+    <div class="card a-purple" data-trad="medinan">
+      <span class="card-icon">👹</span><div class="card-verse-ar">إِلَّا إِبْلِيسَ كَانَ مِنَ الْجِنِّ</div>
+      <div class="card-title">Iblis: Angel or Jinn?</div><div class="card-title-ar">طبيعة إبليس: مَلَك أم جني؟</div>
+      <div class="card-source">٢:٣٤ ضد ١٨:٥٠</div>
+      <div class="card-links">
+        <a href="https://quran.com/2/34" target="_blank" class="card-link">Quran 2:34</a>
+        <a href="https://quran.com/18/50" target="_blank" class="card-link">Quran 18:50</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/2/34" target="_blank" class="inline-link">2:34</a> states God commanded the *angels* to prostrate, and they all did "except Iblis," grammatically categorizing him as a rebellious angel. However, <a href="https://quran.com/18/50" target="_blank" class="inline-link">18:50</a> explicitly states "he was of the *jinn*."</p>
+      <p class="card-desc-ar">الآية <a href="https://quran.com/2/34" target="_blank" class="inline-link">2:34</a> تقول "وَإِذْ قُلْنَا لِلْمَلَائِكَةِ اسْجُدُوا لِآدَمَ فَسَجَدُوا إِلَّا إِبْلِيسَ"، وهو استثناء يصنفه لغوياً كأحد الملائكة. لكن الآية <a href="https://quran.com/18/50" target="_blank" class="inline-link">18:50</a> تصرح بوضوح "كَانَ مِنَ الْجِنِّ". تضارب جلي في أصل المخلوق.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 3 -->
+    <div class="card a-purple" data-trad="medinan">
+      <span class="card-icon">✝️</span><div class="card-verse-ar">إِنِّي مُتَوَفِّيكَ وَرَافِعُكَ إِلَيَّ</div>
+      <div class="card-title">Did Jesus actually die?</div><div class="card-title-ar">هل مات المسيح حقاً؟</div>
+      <div class="card-source">١٩:٣٣، ٣:٥٥ ضد ٤:١٥٧</div>
+      <div class="card-links">
+        <a href="https://quran.com/19/33" target="_blank" class="card-link">Quran 19:33</a>
+        <a href="https://quran.com/3/55" target="_blank" class="card-link">Quran 3:55</a>
+        <a href="https://quran.com/4/157" target="_blank" class="card-link">Quran 4:157</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/19/33" target="_blank" class="inline-link">19:33</a> and <a href="https://quran.com/3/55" target="_blank" class="inline-link">3:55</a> explicitly quote Jesus speaking of the day he "dies" and Allah promising to cause his physical death (mutawaffeeka). Yet <a href="https://quran.com/4/157" target="_blank" class="inline-link">4:157</a> strictly denies he ever died or was killed, claiming it was only "made to appear so" (shubbiha lahum).</p>
+      <p class="card-desc-ar">الآيات <a href="https://quran.com/19/33" target="_blank" class="inline-link">19:33</a> و <a href="https://quran.com/3/55" target="_blank" class="inline-link">3:55</a> تتحدث بوضوح عن "موت" و"وفاة" عيسى الحقيقية (إني متوفيك). في حين تنفي الآية <a href="https://quran.com/4/157" target="_blank" class="inline-link">4:157</a> موته أو صلبه قطعياً وتقول "شُبِّهَ لَهُمْ".</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 4 -->
+    <div class="card a-purple" data-trad="medinan">
+      <span class="card-icon">📖</span><div class="card-verse-ar">مَا يَعْلَمُ تَأْوِيلَهُ إِلَّا اللَّهُ</div>
+      <div class="card-title">Is the Quran Clear?</div><div class="card-title-ar">هل آيات القرآن مبينة وواضحة؟</div>
+      <div class="card-source">١٦:١٠٣، ١٢:٢ ضد ٣:٧</div>
+      <div class="card-links">
+        <a href="https://quran.com/16/103" target="_blank" class="card-link">Quran 16:103</a>
+        <a href="https://quran.com/12/2" target="_blank" class="card-link">Quran 12:2</a>
+        <a href="https://quran.com/3/7" target="_blank" class="card-link">Quran 3:7</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/16/103" target="_blank" class="inline-link">16:103</a> and <a href="https://quran.com/12/2" target="_blank" class="inline-link">12:2</a> claim the Quran is a "clear Arabic" book, perfectly easy to understand. But <a href="https://quran.com/3/7" target="_blank" class="inline-link">3:7</a> admits some verses are "unspecific/ambiguous" (mutashabihat) and that "no one knows its true interpretation except Allah."</p>
+      <p class="card-desc-ar">الآيات <a href="https://quran.com/16/103" target="_blank" class="inline-link">16:103</a> و <a href="https://quran.com/12/2" target="_blank" class="inline-link">12:2</a> تؤكد باستمرار أن القرآن "عربي مبين" وواضح. لكن الآية <a href="https://quran.com/3/7" target="_blank" class="inline-link">3:7</a> تعترف بوجود آيات "متشابهات" وأن "مَا يَعْلَمُ تَأْوِيلَهُ إِلَّا اللَّهُ". كيف يكون واضحاً ومستحيلاً على الفهم في نفس الوقت؟</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 5 -->
+    <div class="card a-purple" data-trad="meccan">
+      <span class="card-icon">🌪️</span><div class="card-verse-ar">سَبْعَ لَيَالٍ وَثَمَانِيَةَ أَيَّامٍ</div>
+      <div class="card-title">Duration of the storm on 'Aad</div><div class="card-title-ar">مدة تدمير قوم عاد</div>
+      <div class="card-source">٥٤:١٩ ضد ٦٩:٧</div>
+      <div class="card-links">
+        <a href="https://quran.com/54/19" target="_blank" class="card-link">Quran 54:19</a>
+        <a href="https://quran.com/69/7" target="_blank" class="card-link">Quran 69:7</a>
+      </div>
+      <p class="card-desc">How long did it take to destroy the people of 'Aad? <a href="https://quran.com/54/19" target="_blank" class="inline-link">54:19</a> states it was "a day of continuous misfortune" (a singular day). <a href="https://quran.com/69/7" target="_blank" class="inline-link">69:7</a> mathematically contradicts this, stating it took "seven nights and eight days in succession."</p>
+      <p class="card-desc-ar">كم استغرق إهلاك قوم عاد؟ سورة القمر <a href="https://quran.com/54/19" target="_blank" class="inline-link">54:19</a> تقول إنه كان في "يَوْمِ نَحْسٍ مُّسْتَمِرٍّ" (يوم واحد). بينما سورة الحاقة <a href="https://quran.com/69/7" target="_blank" class="inline-link">69:7</a> تناقض ذلك وتقول "سَبْعَ لَيَالٍ وَثَمَانِيَةَ أَيَّامٍ حُسُومًا".</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 6 -->
+    <div class="card a-purple" data-trad="meccan">
+      <span class="card-icon">✨</span><div class="card-verse-ar">وَمَا مَنَعَنَا أَن نُّرْسِلَ بِالْآيَاتِ إِلَّا أَن كَذَّبَ بِهَا الْأَوَّلُونَ</div>
+      <div class="card-title">Did Muhammad Perform Miracles?</div><div class="card-title-ar">هل جاء محمد بمعجزات مادية؟</div>
+      <div class="card-source">١٧:٥٩، ٢٩:٥٠ ضد ٥٤:١-٢</div>
+      <div class="card-links">
+        <a href="https://quran.com/17/59" target="_blank" class="card-link">Quran 17:59</a>
+        <a href="https://quran.com/29/50" target="_blank" class="card-link">Quran 29:50</a>
+        <a href="https://quran.com/54/1" target="_blank" class="card-link">Quran 54:1-2</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/17/59" target="_blank" class="inline-link">17:59</a> literally states Allah *stopped* sending physical miracles because past people denied them. <a href="https://quran.com/29/50" target="_blank" class="inline-link">29:50</a> says Muhammad's only sign is the Quran. Yet <a href="https://quran.com/54/1" target="_blank" class="inline-link">54:1-2</a> completely ignores this rule, implying he physically split the moon.</p>
+      <p class="card-desc-ar">الآية <a href="https://quran.com/17/59" target="_blank" class="inline-link">17:59</a> تنفي إرسال المعجزات المادية صراحة بحجة تكذيب الأولين لها، والآية <a href="https://quran.com/29/50" target="_blank" class="inline-link">29:50</a> تؤكد أن النبي مجرد نذير. بينما سورة القمر <a href="https://quran.com/54/1" target="_blank" class="inline-link">54:1-2</a> تلمح إلى امتلاكه معجزة مادية مبهرة وهي انشقاق القمر.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 7 -->
+    <div class="card a-purple" data-trad="medinan">
+      <span class="card-icon">🍷</span><div class="card-verse-ar">تَتَّخِذُونَ مِنْهُ سَكَرًا وَرِزْقًا حَسَنًا</div>
+      <div class="card-title">Is Alcohol Good or Evil?</div><div class="card-title-ar">هل الخمر رزق حسن أم رجس؟</div>
+      <div class="card-source">١٦:٦٧ ضد ٥:٩٠</div>
+      <div class="card-links">
+        <a href="https://quran.com/16/67" target="_blank" class="card-link">Quran 16:67</a>
+        <a href="https://quran.com/5/90" target="_blank" class="card-link">Quran 5:90</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/16/67" target="_blank" class="inline-link">16:67</a> speaks positively of getting "intoxicating drink and good provision" from grapes. Later, <a href="https://quran.com/5/90" target="_blank" class="inline-link">5:90</a> completely reverses this, calling intoxicants "defilement from the work of Satan." An eternal, perfect text does not arbitrarily flip its core morality.</p>
+      <p class="card-desc-ar">الآية <a href="https://quran.com/16/67" target="_blank" class="inline-link">16:67</a> تتحدث بإيجابية عن اتخاذ "سَكَرًا وَرِزْقًا حَسَنًا" من العنب. لاحقاً، الآية <a href="https://quran.com/5/90" target="_blank" class="inline-link">5:90</a> تنسخ هذا وتصف الخمر بأنه "رِجْسٌ مِّنْ عَمَلِ الشَّيْطَانِ". النص الأبدي يغير حكمه الأخلاقي ليناسب تغير الظروف.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 8 -->
+    <div class="card a-purple" data-trad="meccan">
+      <span class="card-icon">🔥</span><div class="card-verse-ar">وَإِن مِّنكُمْ إِلَّا وَارِدُهَا</div>
+      <div class="card-title">Will Believers Enter Hell?</div><div class="card-title-ar">هل سيدخل المؤمنون الجحيم؟</div>
+      <div class="card-source">١٩:٧١ ضد ٢١:١٠١</div>
+      <div class="card-links">
+        <a href="https://quran.com/19/71" target="_blank" class="card-link">Quran 19:71</a>
+        <a href="https://quran.com/21/101" target="_blank" class="card-link">Quran 21:101</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/19/71" target="_blank" class="inline-link">19:71</a> tells all Muslims: "There is none of you except he will come to it [Hell]... an inevitability decreed." But <a href="https://quran.com/21/101" target="_blank" class="inline-link">21:101</a> directly contradicts this, stating the righteous "will be removed far from it."</p>
+      <p class="card-desc-ar">سورة مريم <a href="https://quran.com/19/71" target="_blank" class="inline-link">19:71</a> تؤكد للجميع (بما فيهم المؤمنون): "وَإِن مِّنكُمْ إِلَّا وَارِدُهَا كَانَ عَلَى رَبِّكَ حَتْمًا مَّقْضِيًّا". لكن سورة الأنبياء <a href="https://quran.com/21/101" target="_blank" class="inline-link">21:101</a> تناقض ذلك بأن المؤمنين "عَنْهَا مُبْعَدُونَ".</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 9 -->
+    <div class="card a-purple" data-trad="meccan">
+      <span class="card-icon">🧬</span><div class="card-verse-ar">أَنَّىٰ يَكُونُ لَهُ وَلَدٌ وَلَمْ تَكُن لَّهُ صَاحِبَةٌ</div>
+      <div class="card-title">Can God physically have a Son?</div><div class="card-title-ar">هل يمكن لله أن يتخذ ولداً؟</div>
+      <div class="card-source">٦:١٠١ ضد ٣٩:٤</div>
+      <div class="card-links">
+        <a href="https://quran.com/6/101" target="_blank" class="card-link">Quran 6:101</a>
+        <a href="https://quran.com/39/4" target="_blank" class="card-link">Quran 39:4</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/6/101" target="_blank" class="inline-link">6:101</a> argues God *cannot* have a son because "He does not have a companion [wife]," binding an omnipotent God to human biological rules. Yet <a href="https://quran.com/39/4" target="_blank" class="inline-link">39:4</a> changes logic completely, saying He could simply "choose from what He creates" if He wanted a son.</p>
+      <p class="card-desc-ar">الآية <a href="https://quran.com/6/101" target="_blank" class="inline-link">6:101</a> تنفي قدرة الله على اتخاذ ولد بحجة بيولوجية بشرية: "أَنَّى يَكُونُ لَهُ وَلَدٌ وَلَمْ تَكُن لَّهُ صَاحِبَةٌ". لكن الآية <a href="https://quran.com/39/4" target="_blank" class="inline-link">39:4</a> تقول إنه قادر على ذلك دون صاحبة: "لَّاصْطَفَى مِمَّا يَخْلُقُ مَا يَشَاءُ".</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- New Contradiction 10 -->
+    <div class="card a-purple" data-trad="medinan">
+      <span class="card-icon">📿</span><div class="card-verse-ar">فَأَمْسِكُوهُنَّ فِي الْبُيُوتِ حَتَّىٰ يَتَوَفَّاهُنَّ الْمَوْتُ</div>
+      <div class="card-title">The Punishment for Adultery</div><div class="card-title-ar">عقوبة الزنا للنساء</div>
+      <div class="card-source">٤:١٥ ضد ٢٤:٢</div>
+      <div class="card-links">
+        <a href="https://quran.com/4/15" target="_blank" class="card-link">Quran 4:15</a>
+        <a href="https://quran.com/24/2" target="_blank" class="card-link">Quran 24:2</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/4/15" target="_blank" class="inline-link">4:15</a> commands that women guilty of illegal sex be confined to their houses "until death takes them." <a href="https://quran.com/24/2" target="_blank" class="inline-link">24:2</a> overrides this, prescribing 100 lashes instead. Apologists use "abrogation" to explain away God changing His own eternal law.</p>
+      <p class="card-desc-ar">الآية <a href="https://quran.com/4/15" target="_blank" class="inline-link">4:15</a> تعاقب الزانيات بالحبس في البيوت "حَتَّى يَتَوَفَّاهُنَّ الْمَوْتُ". بينما الآية <a href="https://quran.com/24/2" target="_blank" class="inline-link">24:2</a> تشرع جلدهن 100 جلدة. يتم استخدام "النسخ" لتبرير قيام إله كلي العلم بتغيير تشريعاته الأبدية بعد فترة قصيرة.</p>
+      <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
+    </div>
+
+    <!-- PREVIOUS CONTRADICTION CARDS... -->
+    
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">📅</span><div class="card-verse-ar">فِي سِتَّةِ أَيَّامٍ</div>
       <div class="card-title">6 days vs 8 days creation</div><div class="card-title-ar">6 أيام أم 8 أيام</div>
-      <div class="card-source">٧:٥٤ ضد ٤١:٩-١٢</div><div class="card-ref">Quran 41:9-12 (View source)</div>
-      <p class="card-desc">7:54 says creation took 6 days total. But 41:9-12 explicitly breaks it down sequentially using "thumma" (then): 2 days (earth) + 4 days (provisions) + 2 days (heavens) = 8 days. A direct mathematical contradiction.</p>
-      <p class="card-desc-ar">سورة الأعراف تقول إن الخلق استغرق 6 أيام. لكن سورة فصلت تفصلها بوضوح: يومان للأرض + 4 أيام للأقوات + يومان للسماوات = 8 أيام. هذا خطأ رياضي مباشر لا يمكن تبريره.</p>
+      <div class="card-source">٧:٥٤ ضد ٤١:٩-١٢</div>
+      <div class="card-links">
+        <a href="https://quran.com/7/54" target="_blank" class="card-link">Quran 7:54</a>
+        <a href="https://quran.com/41/9" target="_blank" class="card-link">Quran 41:9-12</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/7/54" target="_blank" class="inline-link">7:54</a> says creation took 6 days total. But <a href="https://quran.com/41/9" target="_blank" class="inline-link">41:9-12</a> explicitly breaks it down sequentially using "thumma" (then): 2 days (earth) + 4 days (provisions) + 2 days (heavens) = 8 days. A direct mathematical contradiction.</p>
+      <p class="card-desc-ar">سورة الأعراف (<a href="https://quran.com/7/54" target="_blank" class="inline-link">7:54</a>) تقول إن الخلق استغرق 6 أيام. لكن سورة فصلت (<a href="https://quran.com/41/9" target="_blank" class="inline-link">41:9-12</a>) تفصلها بوضوح: يومان للأرض + 4 أيام للأقوات + يومان للسماوات = 8 أيام. هذا خطأ رياضي مباشر لا يمكن تبريره.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/9/29" target="_blank" class="card a-purple" data-trad="medinan">
+    </div>
+
+    <div class="card a-purple" data-trad="medinan">
       <span class="card-icon">🛡️</span><div class="card-verse-ar">لَا إِكْرَاهَ فِي الدِّينِ</div>
       <div class="card-title">No compulsion vs Sword</div><div class="card-title-ar">حرية الدين ضد السيف</div>
-      <div class="card-source">٢:٢٥٦ ضد ٩:٢٩</div><div class="card-ref">Quran 9:29 (View source)</div>
-      <p class="card-desc">"No compulsion in religion" (2:256) is completely contradicted by the later command to "fight those who do not believe... until they pay jizyah" (9:29). Classical scholars uniformly agree the Sword verse abrogated tolerance. Objective morality shouldn't have an expiration date.</p>
+      <div class="card-source">٢:٢٥٦ ضد ٩:٢٩</div>
+      <div class="card-links">
+        <a href="https://quran.com/2/256" target="_blank" class="card-link">Quran 2:256</a>
+        <a href="https://quran.com/9/29" target="_blank" class="card-link">Quran 9:29</a>
+      </div>
+      <p class="card-desc">"No compulsion in religion" (<a href="https://quran.com/2/256" target="_blank" class="inline-link">2:256</a>) is completely contradicted by the later command to "fight those who do not believe... until they pay jizyah" (<a href="https://quran.com/9/29" target="_blank" class="inline-link">9:29</a>). Classical scholars uniformly agree the Sword verse abrogated tolerance. Objective morality shouldn't have an expiration date.</p>
       <p class="card-desc-ar">آية "لا إكراه في الدين" تتناقض تماماً مع آية السيف التي تأمر بقتال المخالفين حتى يدفعوا الجزية بخضوع. المفسرون يتفقون على أن آية السيف نسخت التسامح. المبادئ الأخلاقية الحقيقية لا تتغير بتغير ميزان القوى.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/4/11" target="_blank" class="card a-purple" data-trad="medinan">
+    </div>
+
+    <div class="card a-purple" data-trad="medinan">
       <span class="card-icon">📜</span><div class="card-verse-ar">يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ</div>
       <div class="card-title">Inheritance math exceeds 100%</div><div class="card-title-ar">حساب المواريث يتجاوز 100%</div>
-      <div class="card-source">٤:١١-١٢</div><div class="card-ref">Quran 4:11-12 (View source)</div>
+      <div class="card-source">٤:١١-١٢</div>
+      <div class="card-links"><a href="https://quran.com/4/11" target="_blank" class="card-link">Quran 4:11-12</a></div>
       <p class="card-desc">Fractions laid out by Allah fail basic math. E.g., a man dies leaving 3 daughters (2/3), parents (1/3), and a wife (1/8). The total is 27/24 (112.5%). Because the perfect God miscalculated, Caliph Umar had to invent "Awl" (proportional reduction) to fix the math.</p>
       <p class="card-desc-ar">الكسور التي حددها القرآن للمواريث تخطئ في الحساب المبدئي. في بعض الحالات (مثل 3 بنات ووالدين وزوجة)، يصل المجموع إلى 112.5%. بسبب هذا الخطأ الحسابي، اضطر الخليفة عمر لابتكار قاعدة "العول" البشرية لترقيع النقص.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/39/12" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">🧔</span><div class="card-verse-ar">قُلْ إِنِّي أَوَّلُ الْمُسْلِمِينَ</div>
       <div class="card-title">Who is the first Muslim?</div><div class="card-title-ar">من هو أول المسلمين؟</div>
-      <div class="card-source">٣٩:١٢ ضد ٢:١٢٧</div><div class="card-ref">Quran 39:12 vs 2:127 (View source)</div>
-      <p class="card-desc">Muhammad is commanded to say "I am the first of the Muslims" (Awwal-ul-Muslimeen). Yet Abraham, Isaac, and Jacob are repeatedly called Muslims centuries prior (2:127), and Moses says "I am the first of the believers" (7:143). A direct historical contradiction.</p>
+      <div class="card-source">٣٩:١٢ ضد ٢:١٢٧</div>
+      <div class="card-links">
+        <a href="https://quran.com/39/12" target="_blank" class="card-link">Quran 39:12</a>
+        <a href="https://quran.com/2/127" target="_blank" class="card-link">Quran 2:127</a>
+        <a href="https://quran.com/7/143" target="_blank" class="card-link">Quran 7:143</a>
+      </div>
+      <p class="card-desc">Muhammad is commanded to say "I am the first of the Muslims" (<a href="https://quran.com/39/12" target="_blank" class="inline-link">39:12</a>). Yet Abraham, Isaac, and Jacob are repeatedly called Muslims centuries prior (<a href="https://quran.com/2/127" target="_blank" class="inline-link">2:127</a>), and Moses says "I am the first of the believers" (<a href="https://quran.com/7/143" target="_blank" class="inline-link">7:143</a>). A direct historical contradiction.</p>
       <p class="card-desc-ar">يُؤمر محمد بأن يقول إنه "أول المسلمين". لكن القرآن نفسه يطلق لقب المسلمين على إبراهيم ويعقوب قبله بقرون، وموسى يقول "أنا أول المؤمنين". تناقض تاريخي وتسلسلي صريح في نفس الكتاب.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/70/4" target="_blank" class="card a-purple" data-trad="medinan">
+    </div>
+
+    <div class="card a-purple" data-trad="medinan">
       <span class="card-icon">📏</span><div class="card-verse-ar">وَيَوْمٌ عِنْدَ رَبِّكَ كَخَمْسِينَ أَلْفَ سَنَةٍ</div>
       <div class="card-title">Length of Allah's day</div><div class="card-title-ar">طول يوم القيامة/الله</div>
-      <div class="card-source">٣٢:٥ ضد ٧٠:٤</div><div class="card-ref">Quran 70:4 (View source)</div>
-      <p class="card-desc">One day with Allah is equal to 1,000 human years (32:5). But in 70:4, the day angels ascend to Him equals 50,000 years. Apologists try to separate the contexts, but both explicitly describe the ascent of divine commands/angels to Allah.</p>
+      <div class="card-source">٣٢:٥ ضد ٧٠:٤</div>
+      <div class="card-links">
+        <a href="https://quran.com/32/5" target="_blank" class="card-link">Quran 32:5</a>
+        <a href="https://quran.com/70/4" target="_blank" class="card-link">Quran 70:4</a>
+      </div>
+      <p class="card-desc">One day with Allah is equal to 1,000 human years (<a href="https://quran.com/32/5" target="_blank" class="inline-link">32:5</a>). But in <a href="https://quran.com/70/4" target="_blank" class="inline-link">70:4</a>, the day angels ascend to Him equals 50,000 years. Apologists try to separate the contexts, but both explicitly describe the ascent of divine commands/angels to Allah.</p>
       <p class="card-desc-ar">في سورة السجدة، يوم عروج الأمر لله يعادل 1000 سنة بشرية. وفي سورة المعارج، نفس اليوم يعادل 50,000 سنة. محاولات التبرير لا تنجح في حل هذا الفارق الرقمي الهائل لنفس الحدث الغيبي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/10/64" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">✍️</span><div class="card-verse-ar">لَا تَبْدِيلَ لِكَلِمَاتِ اللَّهِ</div>
       <div class="card-title">Can Allah's words be changed?</div><div class="card-title-ar">هل تتغير كلمات الله؟</div>
-      <div class="card-source">١٠:٦٤ ضد ٢:١٠٦</div><div class="card-ref">Quran 10:64 vs 2:106 (View source)</div>
-      <p class="card-desc">10:64 insists "There is no change in the words of Allah." Yet 2:106 explicitly introduces abrogation (Naskh): "We do not abrogate a verse... except We bring a better one." An eternal, omniscient creator does not need to revise and edit his own perfect rules.</p>
+      <div class="card-source">١٠:٦٤ ضد ٢:١٠٦</div>
+      <div class="card-links">
+        <a href="https://quran.com/10/64" target="_blank" class="card-link">Quran 10:64</a>
+        <a href="https://quran.com/2/106" target="_blank" class="card-link">Quran 2:106</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/10/64" target="_blank" class="inline-link">10:64</a> insists "There is no change in the words of Allah." Yet <a href="https://quran.com/2/106" target="_blank" class="inline-link">2:106</a> explicitly introduces abrogation (Naskh): "We do not abrogate a verse... except We bring a better one." An eternal, omniscient creator does not need to revise and edit his own perfect rules.</p>
       <p class="card-desc-ar">سورة يونس تؤكد بشكل قاطع: "لا تبديل لكلمات الله". في حين أن سورة البقرة تشرع "النسخ" وتغيير الآيات بآيات أخرى. الإله الكلي المعرفة لا يحتاج لإصدار تحديثات مستمرة لتعديل تشريعاته.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/28/56" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">🧭</span><div class="card-verse-ar">إِنَّكَ لَا تَهْدِي مَنْ أَحْبَبْتَ</div>
       <div class="card-title">Who guides to the truth?</div><div class="card-title-ar">من يملك الهداية؟</div>
-      <div class="card-source">٢٨:٥٦ ضد ٤٢:٥٢</div><div class="card-ref">Quran 28:56 vs 42:52 (View source)</div>
-      <p class="card-desc">28:56 tells Muhammad definitively: "Indeed, you do not guide whom you like." But 42:52 directly contradicts this statement: "And indeed, you [Muhammad] guide to a straight path." Which is it?</p>
+      <div class="card-source">٢٨:٥٦ ضد ٤٢:٥٢</div>
+      <div class="card-links">
+        <a href="https://quran.com/28/56" target="_blank" class="card-link">Quran 28:56</a>
+        <a href="https://quran.com/42/52" target="_blank" class="card-link">Quran 42:52</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/28/56" target="_blank" class="inline-link">28:56</a> tells Muhammad definitively: "Indeed, you do not guide whom you like." But <a href="https://quran.com/42/52" target="_blank" class="inline-link">42:52</a> directly contradicts this statement: "And indeed, you [Muhammad] guide to a straight path." Which is it?</p>
       <p class="card-desc-ar">في سورة القصص ينفي القرآن قدرة محمد على الهداية: "إنك لا تهدي من أحببت". ثم يناقض ذلك تماماً في سورة الشورى: "وإنك لتهدي إلى صراط مستقيم". تناقض صريح في تحديد دور النبي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/4/48" target="_blank" class="card a-purple" data-trad="medinan">
+    </div>
+
+    <div class="card a-purple" data-trad="medinan">
       <span class="card-icon">⚠️</span><div class="card-verse-ar">إِنَّ اللَّهَ لَا يَغْفِرُ أَنْ يُشْرَكَ بِهِ</div>
       <div class="card-title">Is Shirk (polytheism) forgiven?</div><div class="card-title-ar">هل يُغفر الشرك؟</div>
-      <div class="card-source">٤:٤٨ ضد ٣٩:٥٣</div><div class="card-ref">Quran 4:48 vs 39:53 (View source)</div>
-      <p class="card-desc">4:48 states categorically that Allah *never* forgives shirk. But 39:53 says universally "Indeed, Allah forgives *all* sins." Historically, many of Muhammad's companions committed shirk for decades before converting, making 4:48 logically flawed.</p>
+      <div class="card-source">٤:٤٨ ضد ٣٩:٥٣</div>
+      <div class="card-links">
+        <a href="https://quran.com/4/48" target="_blank" class="card-link">Quran 4:48</a>
+        <a href="https://quran.com/39/53" target="_blank" class="card-link">Quran 39:53</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/4/48" target="_blank" class="inline-link">4:48</a> states categorically that Allah *never* forgives shirk. But <a href="https://quran.com/39/53" target="_blank" class="inline-link">39:53</a> says universally "Indeed, Allah forgives *all* sins." Historically, many of Muhammad's companions committed shirk for decades before converting, making 4:48 logically flawed.</p>
       <p class="card-desc-ar">سورة النساء تؤكد بحسم أن الله لا يغفر الشرك أبداً. لكن سورة الزمر تقول في تعميم مطلق: "إن الله يغفر الذنوب جميعاً". معظم الصحابة كانوا مشركين في الأساس وغُفر لهم، مما يهدم حتمية آية سورة النساء.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/3/124" target="_blank" class="card a-purple" data-trad="medinan">
+    </div>
+
+    <div class="card a-purple" data-trad="medinan">
       <span class="card-icon">👼</span><div class="card-verse-ar">بِثَلَاثَةِ آلَافٍ مِنَ الْمَلَائِكَةِ</div>
       <div class="card-title">How many angels at Badr?</div><div class="card-title-ar">عدد الملائكة في معركة بدر</div>
-      <div class="card-source">٣:١٢٤ ضد ٨:٩</div><div class="card-ref">Quran 3:124 vs 8:9 (View source)</div>
-      <p class="card-desc">Regarding the exact same Battle of Badr, 3:124 says Allah sent 3,000 angels to assist. Yet 8:9 says he answered their prayers with exactly 1,000 angels. They cannot both be the factual number for the same historical event.</p>
+      <div class="card-source">٣:١٢٤ ضد ٨:٩</div>
+      <div class="card-links">
+        <a href="https://quran.com/3/124" target="_blank" class="card-link">Quran 3:124</a>
+        <a href="https://quran.com/8/9" target="_blank" class="card-link">Quran 8:9</a>
+      </div>
+      <p class="card-desc">Regarding the exact same Battle of Badr, <a href="https://quran.com/3/124" target="_blank" class="inline-link">3:124</a> says Allah sent 3,000 angels to assist. Yet <a href="https://quran.com/8/9" target="_blank" class="inline-link">8:9</a> says he answered their prayers with exactly 1,000 angels. They cannot both be the factual number for the same historical event.</p>
       <p class="card-desc-ar">في سياق معركة بدر، يذكر القرآن في آل عمران أن الله أرسل 3000 ملك لدعم المؤمنين. وفي الأنفال يذكر أن العدد هو 1000 ملك. لا يمكن أن يكون الرقمان صحيحين لنفس المعركة التاريخية.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/11/43" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">🌊</span><div class="card-verse-ar">وَكَانَ مِنَ الْمُغْرَقِينَ</div>
       <div class="card-title">Fate of Noah's family</div><div class="card-title-ar">مصير عائلة نوح</div>
-      <div class="card-source">١١:٤٣ ضد ٢١:٧٦</div><div class="card-ref">Quran 11:43 vs 21:76 (View source)</div>
-      <p class="card-desc">11:43 details a tragic story of Noah's son rejecting the ark and drowning in the flood. But 21:76 explicitly states Allah saved Noah "and his family" (wa-ahlahu) entirely from the great affliction. Factual contradiction.</p>
+      <div class="card-source">١١:٤٣ ضد ٢١:٧٦</div>
+      <div class="card-links">
+        <a href="https://quran.com/11/43" target="_blank" class="card-link">Quran 11:43</a>
+        <a href="https://quran.com/21/76" target="_blank" class="card-link">Quran 21:76</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/11/43" target="_blank" class="inline-link">11:43</a> details a tragic story of Noah's son rejecting the ark and drowning in the flood. But <a href="https://quran.com/21/76" target="_blank" class="inline-link">21:76</a> explicitly states Allah saved Noah "and his family" (wa-ahlahu) entirely from the great affliction. Factual contradiction.</p>
       <p class="card-desc-ar">سورة هود تسرد قصة غرق ابن نوح لأنه رفض ركوب السفينة. في المقابل، سورة الأنبياء تصرح بشكل قاطع بأن الله نجّى نوحاً "وأهله" من الكرب العظيم بدون أي استثناء. تناقض في سرد تفاصيل القصة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/2/254" target="_blank" class="card a-purple" data-trad="medinan">
+    </div>
+
+    <div class="card a-purple" data-trad="medinan">
       <span class="card-icon">⚖️</span><div class="card-verse-ar">لَا بَيْعٌ فِيهِ وَلَا خُلَّةٌ وَلَا شَفَاعَةٌ</div>
       <div class="card-title">Intercession on Judgment Day?</div><div class="card-title-ar">هل توجد شفاعة يوم القيامة؟</div>
-      <div class="card-source">٢:٢٥٤ ضد ٢٠:١٠٩</div><div class="card-ref">Quran 2:254 vs 20:109 (View source)</div>
-      <p class="card-desc">2:254 categorically states there is absolutely no intercession (shafa'ah) on Judgment Day. However, 20:109 walks this back, saying intercession *will* be accepted for those whom Allah permits. An absolute denial versus a conditional allowance.</p>
+      <div class="card-source">٢:٢٥٤ ضد ٢٠:١٠٩</div>
+      <div class="card-links">
+        <a href="https://quran.com/2/254" target="_blank" class="card-link">Quran 2:254</a>
+        <a href="https://quran.com/20/109" target="_blank" class="card-link">Quran 20:109</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/2/254" target="_blank" class="inline-link">2:254</a> categorically states there is absolutely no intercession (shafa'ah) on Judgment Day. However, <a href="https://quran.com/20/109" target="_blank" class="inline-link">20:109</a> walks this back, saying intercession *will* be accepted for those whom Allah permits. An absolute denial versus a conditional allowance.</p>
       <p class="card-desc-ar">آية 254 من سورة البقرة تنفي وجود الشفاعة يوم القيامة نفياً قاطعاً ومطلقاً. بينما آية 109 من سورة طه تتراجع عن هذا النفي وتثبت الشفاعة لمن أذن له الرحمن. تناقض بين الرفض المطلق والقبول المشروط.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/2/285" target="_blank" class="card a-purple" data-trad="medinan">
+    </div>
+
+    <div class="card a-purple" data-trad="medinan">
       <span class="card-icon">👑</span><div class="card-verse-ar">لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ</div>
       <div class="card-title">Are all messengers equal?</div><div class="card-title-ar">هل الرسل متساوون؟</div>
-      <div class="card-source">٢:٢٨٥ ضد ٢:٢٥٣</div><div class="card-ref">Quran 2:285 vs 2:253 (View source)</div>
-      <p class="card-desc">2:285 dictates the creed: "We make no distinction between any of His messengers." Just 32 verses earlier (2:253), Allah literally says "Those messengers We endowed with gifts, some above others."</p>
+      <div class="card-source">٢:٢٨٥ ضد ٢:٢٥٣</div>
+      <div class="card-links">
+        <a href="https://quran.com/2/285" target="_blank" class="card-link">Quran 2:285</a>
+        <a href="https://quran.com/2/253" target="_blank" class="card-link">Quran 2:253</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/2/285" target="_blank" class="inline-link">2:285</a> dictates the creed: "We make no distinction between any of His messengers." Just 32 verses earlier (<a href="https://quran.com/2/253" target="_blank" class="inline-link">2:253</a>), Allah literally says "Those messengers We endowed with gifts, some above others."</p>
       <p class="card-desc-ar">الآية 285 من البقرة تنص على قاعدة عقائدية: "لا نفرق بين أحد من رسله". لكن في نفس السورة (الآية 253)، يقول النص بوضوح: "تلك الرسل فضلنا بعضهم على بعض". تناقض عقائدي في نفس السورة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/88/6" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">🔥</span><div class="card-verse-ar">لَيْسَ لَهُمْ طَعَامٌ إِلَّا مِنْ ضَرِيعٍ</div>
       <div class="card-title">What do they eat in Hell?</div><div class="card-title-ar">طعام أهل الجحيم</div>
-      <div class="card-source">٨٨:٦ ضد ٦٩:٣٦</div><div class="card-ref">Quran 88:6 vs 69:36 (View source)</div>
-      <p class="card-desc">88:6 says inmates have NO food EXCEPT "Dhari" (thorn). 69:36 says they have NO food EXCEPT "Ghislin" (pus). 37:62 says they eat Zaqqum. The Arabic absolute exclusion ("laysa lahum ta'amun illa...") makes these three statements mutually exclusive.</p>
+      <div class="card-source">٨٨:٦ ضد ٦٩:٣٦</div>
+      <div class="card-links">
+        <a href="https://quran.com/88/6" target="_blank" class="card-link">Quran 88:6</a>
+        <a href="https://quran.com/69/36" target="_blank" class="card-link">Quran 69:36</a>
+        <a href="https://quran.com/37/62" target="_blank" class="card-link">Quran 37:62</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/88/6" target="_blank" class="inline-link">88:6</a> says inmates have NO food EXCEPT "Dhari" (thorn). <a href="https://quran.com/69/36" target="_blank" class="inline-link">69:36</a> says they have NO food EXCEPT "Ghislin" (pus). <a href="https://quran.com/37/62" target="_blank" class="inline-link">37:62</a> says they eat Zaqqum. The Arabic absolute exclusion ("laysa lahum ta'amun illa...") makes these three statements mutually exclusive.</p>
       <p class="card-desc-ar">تستخدم الآيات أسلوب الحصر المطلق في ثلاث إجابات متناقضة: "ليس لهم طعام إلا من ضريع"، وفي آية أخرى "ولا طعام إلا من غسلين"، وفي مكان ثالث أن طعامهم من "شجرة الزقوم". الحصر اللغوي يمنع التعدد.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/16/102" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">🕊️</span><div class="card-verse-ar">قُلْ نَزَّلَهُ رُوحُ الْقُدُسِ</div>
       <div class="card-title">Who brought the Quran down?</div><div class="card-title-ar">من الذي نزّل القرآن؟</div>
-      <div class="card-source">١٦:١٠٢ ضد ٢:٩٧</div><div class="card-ref">Quran 16:102 vs 2:97 (View source)</div>
-      <p class="card-desc">16:102 says the "Holy Spirit" (Ruh al-Qudus) brought it down. 2:97 says the angel Gabriel (Jibril) brought it down. In biblical history, the Holy Spirit and Gabriel are completely separate entities. Islamic scholars retroactively merged them into one being to cover up this error.</p>
+      <div class="card-source">١٦:١٠٢ ضد ٢:٩٧</div>
+      <div class="card-links">
+        <a href="https://quran.com/16/102" target="_blank" class="card-link">Quran 16:102</a>
+        <a href="https://quran.com/2/97" target="_blank" class="card-link">Quran 2:97</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/16/102" target="_blank" class="inline-link">16:102</a> says the "Holy Spirit" (Ruh al-Qudus) brought it down. <a href="https://quran.com/2/97" target="_blank" class="inline-link">2:97</a> says the angel Gabriel (Jibril) brought it down. In biblical history, the Holy Spirit and Gabriel are completely separate entities. Islamic scholars retroactively merged them into one being to cover up this error.</p>
       <p class="card-desc-ar">آية تقول إن "روح القدس" هو من نزّل القرآن، وآية أخرى تقول إنه الملاك "جبريل". في التراث الديني الأصلي، هما كيانان منفصلان تماماً. دمج علماء المسلمين لهما هو محاولة لاحقة لتغطية هذا التناقض.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/79/27-30" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">🌍</span><div class="card-verse-ar">وَالْأَرْضَ بَعْدَ ذَٰلِكَ دَحَاهَا</div>
       <div class="card-title">Creation Order (Earth vs Sky)</div><div class="card-title-ar">ترتيب خلق الأرض والسماء</div>
-      <div class="card-source">٧٩:٢٧-٣٠ ضد ٢:٢٩</div><div class="card-ref">Quran 79:27-30 vs 2:29 (View source)</div>
-      <p class="card-desc">79:27-30 clearly states the heavens were built, AND AFTER THAT (ba'da dhalika) the earth was spread out. But 2:29 says the earth was fully created, AND THEN (thumma) Allah turned to the heaven to form it. A direct chronological paradox.</p>
+      <div class="card-source">٧٩:٢٧-٣٠ ضد ٢:٢٩</div>
+      <div class="card-links">
+        <a href="https://quran.com/79/27" target="_blank" class="card-link">Quran 79:27-30</a>
+        <a href="https://quran.com/2/29" target="_blank" class="card-link">Quran 2:29</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/79/27" target="_blank" class="inline-link">79:27-30</a> clearly states the heavens were built, AND AFTER THAT (ba'da dhalika) the earth was spread out. But <a href="https://quran.com/2/29" target="_blank" class="inline-link">2:29</a> says the earth was fully created, AND THEN (thumma) Allah turned to the heaven to form it. A direct chronological paradox.</p>
       <p class="card-desc-ar">سورة النازعات توضح أن السماء خُلقت وبُنيت، "والأرض بعد ذلك دحاها". بينما سورة البقرة تؤكد أن الأرض خُلقت أولاً، "ثم استوى إلى السماء". تناقض زمني مباشر في ترتيب عملية الخلق.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/31/14" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">🧮</span><div class="card-verse-ar">وَفِصَالُهُ فِي عَامَيْنِ</div>
       <div class="card-title">Weaning & Gestation Math</div><div class="card-title-ar">حساب مدة الحمل والفطام</div>
-      <div class="card-source">٣١:١٤ ضد ٤٦:١٥</div><div class="card-ref">Quran 31:14 vs 46:15 (View source)</div>
-      <p class="card-desc">31:14 says weaning takes 24 months. 46:15 says gestation + weaning = 30 months. This leaves only 6 months for a full-term human pregnancy, which is biologically premature and historically fatal. An elementary math failure.</p>
+      <div class="card-source">٣١:١٤ ضد ٤٦:١٥</div>
+      <div class="card-links">
+        <a href="https://quran.com/31/14" target="_blank" class="card-link">Quran 31:14</a>
+        <a href="https://quran.com/46/15" target="_blank" class="card-link">Quran 46:15</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/31/14" target="_blank" class="inline-link">31:14</a> says weaning takes 24 months. <a href="https://quran.com/46/15" target="_blank" class="inline-link">46:15</a> says gestation + weaning = 30 months. This leaves only 6 months for a full-term human pregnancy, which is biologically premature and historically fatal. An elementary math failure.</p>
       <p class="card-desc-ar">سورة لقمان تحدد الفطام في عامين (24 شهراً). وسورة الأحقاف تقول إن الحمل والفطام معاً مدتهما 30 شهراً. بعملية حسابية بسيطة، هذا يعني أن الحمل الكامل يستغرق 6 أشهر فقط، وهو أمر غير صحيح طبياً للحمل الطبيعي المكتمل.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/2/62" target="_blank" class="card a-purple" data-trad="medinan">
+    </div>
+
+    <div class="card a-purple" data-trad="medinan">
       <span class="card-icon">🕊️</span><div class="card-verse-ar">إِنَّ الَّذِينَ آمَنُوا وَالَّذِينَ هَادُوا</div>
       <div class="card-title">Salvation for Jews & Christians?</div><div class="card-title-ar">هل ينجو اليهود والنصارى؟</div>
-      <div class="card-source">٢:٦٢ ضد ٣:٨٥</div><div class="card-ref">Quran 2:62 vs 3:85 (View source)</div>
-      <p class="card-desc">2:62 promises that Jews and Christians will have their reward in heaven and no fear. Yet 3:85 categorically states that anyone seeking a religion other than Islam will have it rejected and be a loser. Theological shifting solved only by "abrogation".</p>
+      <div class="card-source">٢:٦٢ ضد ٣:٨٥</div>
+      <div class="card-links">
+        <a href="https://quran.com/2/62" target="_blank" class="card-link">Quran 2:62</a>
+        <a href="https://quran.com/3/85" target="_blank" class="card-link">Quran 3:85</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/2/62" target="_blank" class="inline-link">2:62</a> promises that Jews and Christians will have their reward in heaven and no fear. Yet <a href="https://quran.com/3/85" target="_blank" class="inline-link">3:85</a> categorically states that anyone seeking a religion other than Islam will have it rejected and be a loser. Theological shifting solved only by "abrogation".</p>
       <p class="card-desc-ar">سورة البقرة (62) تعد اليهود والنصارى بالأجر والنجاة في الآخرة. بينما سورة آل عمران (85) تؤكد أن من يبتغ غير الإسلام ديناً فلن يُقبل منه وهو من الخاسرين. تغيير عقائدي جذري يُعذر بـ "النسخ".</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/53/38" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">⚖️</span><div class="card-verse-ar">أَلَّا تَزِرُ وَازِرَةٌ وِزْرَ أُخْرَىٰ</div>
       <div class="card-title">Bearing another's burden</div><div class="card-title-ar">من يتحمل وزر الذنوب؟</div>
-      <div class="card-source">٥٣:٣٨ ضد ١٦:٢٥</div><div class="card-ref">Quran 53:38 vs 16:25 (View source)</div>
-      <p class="card-desc">53:38 establishes strict individual justice: "No bearer of burdens will bear the burden of another." But 16:25 directly contradicts it, saying leaders will bear their own sins AND the sins of those they misled. God breaks his own absolute rule.</p>
+      <div class="card-source">٥٣:٣٨ ضد ١٦:٢٥</div>
+      <div class="card-links">
+        <a href="https://quran.com/53/38" target="_blank" class="card-link">Quran 53:38</a>
+        <a href="https://quran.com/16/25" target="_blank" class="card-link">Quran 16:25</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/53/38" target="_blank" class="inline-link">53:38</a> establishes strict individual justice: "No bearer of burdens will bear the burden of another." But <a href="https://quran.com/16/25" target="_blank" class="inline-link">16:25</a> directly contradicts it, saying leaders will bear their own sins AND the sins of those they misled. God breaks his own absolute rule.</p>
       <p class="card-desc-ar">سورة النجم تؤسس لقاعدة العدل الفردي: "ألا تزر وازرة وزر أخرى". لكن سورة النحل تناقضها تماماً بقولها إن القادة سيحملون أوزارهم الخاصة "ومن أوزار الذين يضلونهم". إله ينقض قاعدته المطلقة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
+    </div>
 
-    <!-- NEW CARDS: CONTRADICTIONS -->
-    <a href="https://quran.com/32/11" target="_blank" class="card a-purple" data-trad="meccan">
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">👻</span><div class="card-verse-ar">قُلْ يَتَوَفَّاكُمْ مَلَكُ الْمَوْتِ</div>
       <div class="card-title">Who takes souls at death?</div><div class="card-title-ar">من يقبض الأرواح؟</div>
-      <div class="card-source">٣٢:١١ ضد ٤٧:٢٧ ضد ٣٩:٤٢</div><div class="card-ref">Quran 32:11 vs 47:27 vs 39:42 (View source)</div>
-      <p class="card-desc">32:11 says ONE Angel of Death takes the soul. 47:27 says PLURAL "angels" strike their faces. Yet 39:42 says Allah Himself takes the souls. A clear textual inconsistency regarding the exact mechanism of a singular event.</p>
-      <p class="card-desc-ar">الآية 32:11 تقول إن ملك الموت (مفرد) يتوفى الأنفس. بينما الآية 47:27 تنسب الفعل للملائكة (جمع). وفي سورة الزمر 39:42 يقال إن "الله يتوفى الأنفس". تضارب صريح في تحديد الفاعل لنفس الحدث.</p>
+      <div class="card-source">٣٢:١١ ضد ٤٧:٢٧ ضد ٣٩:٤٢</div>
+      <div class="card-links">
+        <a href="https://quran.com/32/11" target="_blank" class="card-link">Quran 32:11</a>
+        <a href="https://quran.com/47/27" target="_blank" class="card-link">Quran 47:27</a>
+        <a href="https://quran.com/39/42" target="_blank" class="card-link">Quran 39:42</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/32/11" target="_blank" class="inline-link">32:11</a> says ONE Angel of Death takes the soul. <a href="https://quran.com/47/27" target="_blank" class="inline-link">47:27</a> says PLURAL "angels" strike their faces. Yet <a href="https://quran.com/39/42" target="_blank" class="inline-link">39:42</a> says Allah Himself takes the souls. A clear textual inconsistency regarding the exact mechanism of a singular event.</p>
+      <p class="card-desc-ar">الآية <a href="https://quran.com/32/11" target="_blank" class="inline-link">32:11</a> تقول إن ملك الموت (مفرد) يتوفى الأنفس. بينما الآية <a href="https://quran.com/47/27" target="_blank" class="inline-link">47:27</a> تنسب الفعل للملائكة (جمع). وفي سورة الزمر <a href="https://quran.com/39/42" target="_blank" class="inline-link">39:42</a> يقال إن "الله يتوفى الأنفس". تضارب صريح في تحديد الفاعل لنفس الحدث.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/96/2" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">👤</span><div class="card-verse-ar">خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ</div>
       <div class="card-title">What was man created from?</div><div class="card-title-ar">مم خُلق الإنسان؟</div>
-      <div class="card-source">٩٦:٢ ضد ٢١:٣٠ ضد ١٥:٢٦</div><div class="card-ref">Quran 96:2 vs 21:30 vs 15:26 (View source)</div>
-      <p class="card-desc">Was man created from a clinging blood clot (96:2), water (21:30), sounding clay (15:26), dust (3:59), or from nothing (19:67)? The author provides multiple, mutually exclusive materials across different chapters to fit different rhymes.</p>
-      <p class="card-desc-ar">مم خُلق الإنسان؟ من "علق" (96:2)، أم من "ماء" (21:30)، أم من "صلصال" (15:26)، أم من "تراب" (3:59)، أم من "العدم" (19:67)؟ النص يقدم مواد متناقضة تماماً تتغير بتغير القوافي في السور.</p>
+      <div class="card-source">٩٦:٢ ضد ٢١:٣٠ ضد ١٥:٢٦</div>
+      <div class="card-links">
+        <a href="https://quran.com/96/2" target="_blank" class="card-link">Quran 96:2</a>
+        <a href="https://quran.com/21/30" target="_blank" class="card-link">Quran 21:30</a>
+        <a href="https://quran.com/15/26" target="_blank" class="card-link">Quran 15:26</a>
+        <a href="https://quran.com/3/59" target="_blank" class="card-link">Quran 3:59</a>
+        <a href="https://quran.com/19/67" target="_blank" class="card-link">Quran 19:67</a>
+      </div>
+      <p class="card-desc">Was man created from a clinging blood clot (<a href="https://quran.com/96/2" target="_blank" class="inline-link">96:2</a>), water (<a href="https://quran.com/21/30" target="_blank" class="inline-link">21:30</a>), sounding clay (<a href="https://quran.com/15/26" target="_blank" class="inline-link">15:26</a>), dust (<a href="https://quran.com/3/59" target="_blank" class="inline-link">3:59</a>), or from nothing (<a href="https://quran.com/19/67" target="_blank" class="inline-link">19:67</a>)? The author provides multiple, mutually exclusive materials across different chapters to fit different rhymes.</p>
+      <p class="card-desc-ar">مم خُلق الإنسان؟ من "علق" (<a href="https://quran.com/96/2" target="_blank" class="inline-link">96:2</a>)، أم من "ماء" (<a href="https://quran.com/21/30" target="_blank" class="inline-link">21:30</a>)، أم من "صلصال" (<a href="https://quran.com/15/26" target="_blank" class="inline-link">15:26</a>)، أم من "تراب" (<a href="https://quran.com/3/59" target="_blank" class="inline-link">3:59</a>)، أم من "العدم" (<a href="https://quran.com/19/67" target="_blank" class="inline-link">19:67</a>)؟ النص يقدم مواد متناقضة تماماً تتغير بتغير القوافي في السور.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
-    <a href="https://quran.com/55/39" target="_blank" class="card a-purple" data-trad="meccan">
+    </div>
+
+    <div class="card a-purple" data-trad="meccan">
       <span class="card-icon">❓</span><div class="card-verse-ar">فَيَوْمَئِذٍ لَّا يُسْأَلُ عَن ذَنبِهِ</div>
       <div class="card-title">Will people be questioned?</div><div class="card-title-ar">هل سيُسأل الناس يوم القيامة؟</div>
-      <div class="card-source">٥٥:٣٩ ضد ١٥:٩٢-٩٣</div><div class="card-ref">Quran 55:39 vs 15:92-93 (View source)</div>
-      <p class="card-desc">55:39 unequivocally states: "Then on that Day none will be asked about his sin." Yet 15:92-93 contradicts: "By your Lord, We will surely question them all." Apologists claim these are "different stages," a convenient excuse for a direct contradiction.</p>
+      <div class="card-source">٥٥:٣٩ ضد ١٥:٩٢-٩٣</div>
+      <div class="card-links">
+        <a href="https://quran.com/55/39" target="_blank" class="card-link">Quran 55:39</a>
+        <a href="https://quran.com/15/92" target="_blank" class="card-link">Quran 15:92-93</a>
+      </div>
+      <p class="card-desc"><a href="https://quran.com/55/39" target="_blank" class="inline-link">55:39</a> unequivocally states: "Then on that Day none will be asked about his sin." Yet <a href="https://quran.com/15/92" target="_blank" class="inline-link">15:92-93</a> contradicts: "By your Lord, We will surely question them all." Apologists claim these are "different stages," a convenient excuse for a direct contradiction.</p>
       <p class="card-desc-ar">سورة الرحمن تنص بحسم: "فَيَوْمَئِذٍ لَّا يُسْأَلُ عَن ذَنبِهِ إِنسٌ وَلَا جَانٌّ". لكن سورة الحجر تناقضها تماماً: "فَوَرَبِّكَ لَنَسْأَلَنَّهُمْ أَجْمَعِينَ". ادعاء "تعدد المواقف" هو ترقيع لاحق لتبرير هذا التضارب الجلي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Contradict</span></div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -611,176 +928,215 @@
   <p class="sec-desc t-ar" style="display:none">يخلط النص بين فترات زمنية متباعدة بآلاف السنين، ويدمج شخصيات تاريخية مختلفة، ويقدم نصوصاً منحولة (أبوكريفا) وأساطير مسيحية ويهودية غير موثقة على أنها حقائق تاريخية مقدسة.</p>
   <div class="grid">
 
-    <a href="https://quran.com/19/28" target="_blank" class="card a-blue" data-trad="meccan">
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">👩</span><div class="card-verse-ar">يَا أُخْتَ هَارُونَ</div>
       <div class="card-title">Mary is "Sister of Aaron"</div><div class="card-title-ar">مريم "أخت هارون"</div>
-      <div class="card-source">١٩:٢٨ (مريم)</div><div class="card-ref">Quran 19:28 (View source)</div>
+      <div class="card-source">١٩:٢٨ (مريم)</div>
+      <div class="card-links"><a href="https://quran.com/19/28" target="_blank" class="card-link">Quran 19:28</a></div>
       <p class="card-desc">Mary (Jesus' mother, 1st century) is explicitly called "Sister of Aaron" (Moses' brother, 1400 BCE). The author confused them because both are named Maryam/Miriam. Apologists claim "sister" means descendant, but Mary was of the Tribe of Judah, not Levi (Aaron's tribe).</p>
       <p class="card-desc-ar">القرآن يخاطب مريم أم عيسى (القرن الأول) بـ "يا أخت هارون" (الذي عاش قبلها بـ 1400 سنة). هذا خلط واضح بين مريم أخت موسى وهارون، وبين أم المسيح. التبرير بأنها من نسل هارون باطل تاريخياً لأنها من سبط يهوذا وليس سبط لاوي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/20/85" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🏛️</span><div class="card-verse-ar">وَقَالَ السَّامِرِيُّ</div>
       <div class="card-title">Samaritans in Moses’ time</div><div class="card-title-ar">السامري في عصر موسى</div>
-      <div class="card-source">٢٠:٨٥ (طه)</div><div class="card-ref">Quran 20:85 (View source)</div>
+      <div class="card-source">٢٠:٨٥ (طه)</div>
+      <div class="card-links"><a href="https://quran.com/20/85" target="_blank" class="card-link">Quran 20:85</a></div>
       <p class="card-desc">Claims a "Samaritan" built the golden calf during the Exodus (~1400 BCE). The Samaritans as a distinct people and religious sect did not exist until after the Assyrian conquest in 722 BCE. A massive 700-year anachronism.</p>
       <p class="card-desc-ar">يدعي القرآن أن رجلاً "سامرياً" هو من صنع العجل الذهبي في زمن موسى. تاريخياً، السامريون لم يظهروا كطائفة دينية وشعب إلا بعد السبي الآشوري عام 722 ق.م، أي بعد موسى بحوالي 7 قرون.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/28/6" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">👑</span><div class="card-verse-ar">وَهَامَانُ</div>
       <div class="card-title">Haman as Pharaoh’s minister</div><div class="card-title-ar">هامان كوزير لفرعون</div>
-      <div class="card-source">٢٨:٦ (القصص)</div><div class="card-ref">Quran 28:6 (View source)</div>
+      <div class="card-source">٢٨:٦ (القصص)</div>
+      <div class="card-links"><a href="https://quran.com/28/6" target="_blank" class="card-link">Quran 28:6</a></div>
       <p class="card-desc">Places Haman as Pharaoh's official building a clay tower in Egypt. The real Haman was a Persian vizier under King Xerxes I (Book of Esther) 1,100 years later. Egyptologists confirm no such vizier existed in Moses' Egypt.</p>
       <p class="card-desc-ar">القرآن يجعل "هامان" وزيراً لفرعون مصر يبني له صروحاً من طين. تاريخياً، هامان الحقيقي كان وزيراً فارسياً في بلاط الملك أحشويروش (سفر إستير) بعد الفراعنة بأكثر من 1000 عام. خطأ تاريخي وجغرافي مزدوج.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/17/1" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🕌</span><div class="card-verse-ar">إِلَى الْمَسْجِدِ الْأَقْصَى</div>
       <div class="card-title">Al-Aqsa before it existed</div><div class="card-title-ar">المسجد الأقصى قبل بنائه</div>
-      <div class="card-source">١٧:١ (الإسراء)</div><div class="card-ref">Quran 17:1 (View source)</div>
+      <div class="card-source">١٧:١ (الإسراء)</div>
+      <div class="card-links"><a href="https://quran.com/17/1" target="_blank" class="card-link">Quran 17:1</a></div>
       <p class="card-desc">Muhammad travels by night to the "Al-Aqsa Mosque" (~621 CE). At that time, the Temple Mount in Jerusalem was an empty ruin/garbage dump under Byzantine Christian rule. The Al-Aqsa building was erected by Abd al-Malik in 705 CE.</p>
       <p class="card-desc-ar">يتحدث النص عن رحلة الإسراء إلى "المسجد الأقصى" عام 621 م. تاريخياً، جبل الهيكل في القدس كان مجرد أنقاض ومكب نفايات في العهد البيزنطي آنذاك. مبنى المسجد الأقصى لم يُبنَ إلا في عهد عبد الملك بن مروان عام 705 م.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/12/20" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🪙</span><div class="card-verse-ar">دَرَاهِمَ مَعْدُودَةٍ</div>
       <div class="card-title">Dirhams in Joseph's time</div><div class="card-title-ar">استخدام الدراهم في زمن يوسف</div>
-      <div class="card-source">١٢:٢٠ (يوسف)</div><div class="card-ref">Quran 12:20 (View source)</div>
+      <div class="card-source">١٢:٢٠ (يوسف)</div>
+      <div class="card-links"><a href="https://quran.com/12/20" target="_blank" class="card-link">Quran 12:20</a></div>
       <p class="card-desc">The Quran claims Joseph was sold for "a few Dirhams." Dirham is an Arabized word for the Greek "Drachma." Standardized minted coins were invented by the Lydians ~600 BCE, more than a thousand years after Joseph's era.</p>
       <p class="card-desc-ar">يدعي القرآن أن يوسف بُيع بـ "دراهم معدودة". الدرهم كلمة معربة عن العملة اليونانية "دراخما". من الناحية التاريخية، العملات المعدنية المسكوكة لم تُخترع إلا بعد زمن يوسف بأكثر من 1000 سنة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/7/124" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">✝️</span><div class="card-verse-ar">ثُمَّ لَأُصَلِّبَنَّكُمْ</div>
       <div class="card-title">Crucifixion in Ancient Egypt</div><div class="card-title-ar">الصلب في مصر القديمة</div>
-      <div class="card-source">٧:١٢٤ (الأعراف)</div><div class="card-ref">Quran 7:124 (View source)</div>
+      <div class="card-source">٧:١٢٤ (الأعراف)</div>
+      <div class="card-links"><a href="https://quran.com/7/124" target="_blank" class="card-link">Quran 7:124</a></div>
       <p class="card-desc">Pharaoh threatens to "crucify" (usallibannakum) the sorcerers on palm trunks. Crucifixion as a punishment was invented by the Persians and perfected by the Romans over 1,000 years later. It absolutely did not exist in Moses' Egypt.</p>
       <p class="card-desc-ar">فرعون يهدد السحرة بصلبهم على جذوع النخل. تاريخياً، الصلب كطريقة للإعدام لم يُخترع إلا بواسطة الفرس والرومان بعد الفراعنة بآلاف السنين. الصلب لم يكن موجوداً في مصر القديمة إطلاقاً.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/5/116" target="_blank" class="card a-blue" data-trad="medinan">
+    </div>
+
+    <div class="card a-blue" data-trad="medinan">
       <span class="card-icon">⛪</span><div class="card-verse-ar">اتَّخِذُونِي وَأُمِّيَ إِلَٰهَيْنِ</div>
       <div class="card-title">Mary as part of the Trinity</div><div class="card-title-ar">مريم كجزء من الثالوث المسيحي</div>
-      <div class="card-source">٥:١١٦ (المائدة)</div><div class="card-ref">Quran 5:116 (View source)</div>
+      <div class="card-source">٥:١١٦ (المائدة)</div>
+      <div class="card-links"><a href="https://quran.com/5/116" target="_blank" class="card-link">Quran 5:116</a></div>
       <p class="card-desc">The author incorrectly claims Christians worship Mary as a God in the Trinity alongside Jesus and Allah. No mainstream Christian sect (Catholic, Orthodox, Protestant) ever taught this. The Quran attacks a strawman based on ignorant local hearsay.</p>
       <p class="card-desc-ar">يتهم القرآن المسيحيين بأنهم يتخذون مريم إلهاً ثانياً بجوار الله وعيسى في الثالوث. هذا يعكس جهلاً بعقيدة الثالوث المسيحية (الآب، الابن، الروح القدس). لا توجد أي كنيسة مسيحية عبر التاريخ اعتبرت مريم جزءاً من الثالوث.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/9/30" target="_blank" class="card a-blue" data-trad="medinan">
+    </div>
+
+    <div class="card a-blue" data-trad="medinan">
       <span class="card-icon">🕍</span><div class="card-verse-ar">وَقَالَتِ الْيَهُودُ عُزَيْرٌ ابْنُ اللَّهِ</div>
       <div class="card-title">Jews call Ezra the Son of God</div><div class="card-title-ar">نسبة "عزير ابن الله" لليهود</div>
-      <div class="card-source">٩:٣٠ (التوبة)</div><div class="card-ref">Quran 9:30 (View source)</div>
+      <div class="card-source">٩:٣٠ (التوبة)</div>
+      <div class="card-links"><a href="https://quran.com/9/30" target="_blank" class="card-link">Quran 9:30</a></div>
       <p class="card-desc">"The Jews say, Ezra is the son of Allah." There is absolutely zero Jewish historical, talmudic, or scriptural record of any sect ever claiming Ezra (Uzayr) was God's literal, divine son. A completely fabricated accusation.</p>
       <p class="card-desc-ar">يقول القرآن: "وقالت اليهود عزير ابن الله". لا يوجد أي وثيقة تاريخية أو تلمودية تثبت أن أي طائفة يهودية ادعت يوماً أن النبي عزير هو ابن الله بالمعنى الحرفي أو الإلهي. هذا ادعاء لا أصل له.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/18/90" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🏃</span><div class="card-verse-ar">وَجَدَهَا تَطْلُعُ عَلَىٰ قَوْمٍ</div>
       <div class="card-title">Alexander reaches the Sunrise</div><div class="card-title-ar">الوصول لمكان شروق الشمس</div>
-      <div class="card-source">١٨:٩٠ (الكهف)</div><div class="card-ref">Quran 18:90 (View source)</div>
+      <div class="card-source">١٨:٩٠ (الكهف)</div>
+      <div class="card-links"><a href="https://quran.com/18/90" target="_blank" class="card-link">Quran 18:90</a></div>
       <p class="card-desc">Dhul-Qarnayn (historically mapped to Alexander the Great via the Syriac Alexander Legend) physically travels to the exact earthly location where the sun rises and finds a tribe baking under it. A purely mythological flat-earth story.</p>
       <p class="card-desc-ar">يتحدث القرآن عن ذي القرنين بأنه سافر ووصل مادياً إلى النقطة التي تشرق منها الشمس، ووجد هناك قوماً لا يغطيهم شيء عنها. هذه القصة مبنية على تصور أسطوري قديم بأن الأرض مسطحة ولها حواف تشرق منها الشمس.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/21/80" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🛡️</span><div class="card-verse-ar">وَعَلَّمْنَاهُ صَنْعَةَ لَبُوسٍ لَكُمْ</div>
       <div class="card-title">David invents Chainmail</div><div class="card-title-ar">داود واختراع الدروع المنسوجة</div>
-      <div class="card-source">٢١:٨٠ (الأنبياء)</div><div class="card-ref">Quran 21:80 (View source)</div>
+      <div class="card-source">٢١:٨٠ (الأنبياء)</div>
+      <div class="card-links"><a href="https://quran.com/21/80" target="_blank" class="card-link">Quran 21:80</a></div>
       <p class="card-desc">Claims God taught David (~1000 BCE) how to make chainmail/interwoven armor (sana'ata labusin) to protect soldiers in battle. Historically, chainmail was invented by the Celts in Europe roughly 700 years after David lived.</p>
       <p class="card-desc-ar">يدعي النص أن الله علّم النبي داود (1000 ق.م) صناعة الدروع المنسوجة من الحلقات (الزرد) لحماية المقاتلين. الأبحاث الأثرية تؤكد أن هذه الدروع المنسوجة ابتكرها الكلت في أوروبا بعد عصر داود بقرون طويلة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/18/96" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🧱</span><div class="card-verse-ar">آتُونِي زُبَرَ الْحَدِيدِ</div>
       <div class="card-title">Giant Iron Wall of Gog & Magog</div><div class="card-title-ar">سد يأجوج ومأجوج المعدني</div>
-      <div class="card-source">١٨:٩٦ (الكهف)</div><div class="card-ref">Quran 18:96 (View source)</div>
+      <div class="card-source">١٨:٩٦ (الكهف)</div>
+      <div class="card-links"><a href="https://quran.com/18/96" target="_blank" class="card-link">Quran 18:96</a></div>
       <p class="card-desc">The Quran insists Alexander built a massive iron and molten-copper wall spanning two mountains to trap millions of bloodthirsty monsters. Modern satellites have mapped every inch of the globe; no such giant metallic wall or hidden nation exists.</p>
       <p class="card-desc-ar">يؤكد القرآن وجود سد معدني ضخم من الحديد والنحاس بناه ذو القرنين ليحجز خلفه أمماً هائلة من يأجوج ومأجوج. الأقمار الصناعية رسمت خرائط دقيقة لكل متر على سطح كوكبنا، ولا يوجد أثر لهذا السد أو لهذه الأمم الخفية.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/3/37" target="_blank" class="card a-blue" data-trad="medinan">
+    </div>
+
+    <div class="card a-blue" data-trad="medinan">
       <span class="card-icon">🍒</span><div class="card-verse-ar">وَجَدَ عِنْدَهَا رِزْقًا</div>
       <div class="card-title">Mary raised in the Temple</div><div class="card-title-ar">إقامة مريم في المحراب</div>
-      <div class="card-source">٣:٣٧ (آل عمران)</div><div class="card-ref">Quran 3:37 (View source)</div>
+      <div class="card-source">٣:٣٧ (آل عمران)</div>
+      <div class="card-links"><a href="https://quran.com/3/37" target="_blank" class="card-link">Quran 3:37</a></div>
       <p class="card-desc">Directly copies the *Protoevangelium of James* (a 2nd-century Christian apocryphal forgery), claiming Mary lived inside the Jewish temple sanctuary eating miracle fruit. Historically impossible: Jewish law strictly forbade women from entering the Holy of Holies.</p>
       <p class="card-desc-ar">القرآن ينسخ قصة مسيحية غير معتمدة (من إنجيل يعقوب المنحول) تدعي أن مريم عاشت داخل المحراب في المعبد اليهودي. تاريخياً ووفقاً للشريعة اليهودية، كان يُمنع منعاً باتاً دخول النساء إلى هذا الجزء المقدس من المعبد.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/18/9" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">😴</span><div class="card-verse-ar">أَصْحَابَ الْكَهْفِ وَالرَّقِيمِ</div>
       <div class="card-title">Seven Sleepers of Ephesus</div><div class="card-title-ar">قصة أصحاب الكهف</div>
-      <div class="card-source">١٨:٩-٢٥ (الكهف)</div><div class="card-ref">Quran 18:9-25 (View source)</div>
+      <div class="card-source">١٨:٩-٢٥ (الكهف)</div>
+      <div class="card-links"><a href="https://quran.com/18/9" target="_blank" class="card-link">Quran 18:9-25</a></div>
       <p class="card-desc">The author presents the "Seven Sleepers of Ephesus" (a widely circulated Christian fairy-tale about youths magically sleeping in a cave for 309 years to escape persecution) as literal, divine historical fact.</p>
       <p class="card-desc-ar">أعاد مؤلف القرآن سرد قصة "نيام أفسس السبعة"، وهي مجرد أسطورة خرافية مسيحية انتشرت في ذلك الوقت عن شباب ناموا في كهف لمئات السنين، وقدمها على أنها حقيقة تاريخية بوحي إلهي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/27/17" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🧞</span><div class="card-verse-ar">وَحُشِرَ لِسُلَيْمَانَ جُنُودُهُ مِنَ الْجِنِّ</div>
       <div class="card-title">Solomon's Jinn Army</div><div class="card-title-ar">جيش سليمان من الجن</div>
-      <div class="card-source">٢٧:١٧ (النمل)</div><div class="card-ref">Quran 27:17 (View source)</div>
+      <div class="card-source">٢٧:١٧ (النمل)</div>
+      <div class="card-links"><a href="https://quran.com/27/17" target="_blank" class="card-link">Quran 27:17</a></div>
       <p class="card-desc">Claims Solomon commanded a magical army of Jinn, birds, and men. This entire narrative is directly plagiarized from the Jewish *Targum Sheni of Esther*, an explicitly folkloric and non-historical Jewish midrash.</p>
       <p class="card-desc-ar">قصة تسخير الجن والطيور للنبي سليمان منسوخة بالكامل تقريباً من نص يهودي فولكلوري يُعرف بـ "ترجوم شيني" لسفر إستير. وهو نص تلمودي لم يعتبره اليهود أنفسهم حقيقة تاريخية بل مجرد قصص شعبية.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/5/20" target="_blank" class="card a-blue" data-trad="medinan">
+    </div>
+
+    <div class="card a-blue" data-trad="medinan">
       <span class="card-icon">👑</span><div class="card-verse-ar">وَجَعَلَكُمْ مُلُوكًا</div>
       <div class="card-title">Jews as Kings in Moses' time</div><div class="card-title-ar">بنو إسرائيل ملوكاً زمن موسى</div>
-      <div class="card-source">٥:٢٠ (المائدة)</div><div class="card-ref">Quran 5:20 (View source)</div>
+      <div class="card-source">٥:٢٠ (المائدة)</div>
+      <div class="card-links"><a href="https://quran.com/5/20" target="_blank" class="card-link">Quran 5:20</a></div>
       <p class="card-desc">Moses tells his wandering people in the desert that Allah "made you kings" (muluka). Historically and biblically, the Israelites were nomadic and had absolutely no kings until Saul, hundreds of years after Moses and the Exodus.</p>
       <p class="card-desc-ar">موسى يخاطب قومه التائهين ويقول لهم إن الله "جعلكم ملوكاً". تاريخياً وحسب التوراة، بنو إسرائيل كانوا مجرد قبائل بدوية ولم يؤسسوا أي نظام مَلَكي إلا بعد وفاة موسى بقرون (بدءاً بالملك شاول/طالوت).</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/2/249" target="_blank" class="card a-blue" data-trad="medinan">
+    </div>
+
+    <div class="card a-blue" data-trad="medinan">
       <span class="card-icon">⚔️</span><div class="card-verse-ar">إِنَّ اللَّهَ مُبْتَلِيكُمْ بِنَهَرٍ</div>
       <div class="card-title">Conflating Gideon and Saul</div><div class="card-title-ar">الخلط بين طالوت وجدعون</div>
-      <div class="card-source">٢:٢٤٩ (البقرة)</div><div class="card-ref">Quran 2:249 (View source)</div>
+      <div class="card-source">٢:٢٤٩ (البقرة)</div>
+      <div class="card-links"><a href="https://quran.com/2/249" target="_blank" class="card-link">Quran 2:249</a></div>
       <p class="card-desc">The Quran mixes up the biblical story of Gideon testing his army by drinking from a river (Judges 7) with King Saul (Talut) leading his army against Goliath. It merges two entirely different biblical leaders and eras separated by centuries into a single event.</p>
       <p class="card-desc-ar">يخلط القرآن بين قصة القائد "جدعون" الذي اختبر جيشه بشرب الماء من النهر (سفر القضاة)، وقصة الملك شاول (طالوت). دمج المؤلف بين شخصيتين وحقبتين مختلفتين تماماً بسبب الاعتماد على السرد الشفهي غير الدقيق.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/19/29" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">👶</span><div class="card-verse-ar">قَالُوا كَيْفَ نُكَلِّمُ مَنْ كَانَ فِي الْمَهْدِ صَبِيًّا</div>
       <div class="card-title">Plagiarizing Apocrypha</div><div class="card-title-ar">اقتباس إنجيل الطفولة المنحول</div>
-      <div class="card-source">١٩:٢٩-٣٣ (مريم)</div><div class="card-ref">Quran 19:29-33 (View source)</div>
+      <div class="card-source">١٩:٢٩-٣٣ (مريم)</div>
+      <div class="card-links"><a href="https://quran.com/19/29" target="_blank" class="card-link">Quran 19:29-33</a></div>
       <p class="card-desc">The infant Jesus speaks from the cradle to defend Mary. This non-historical fable was directly plagiarized from the Arabic Infancy Gospel, a 6th-century forgery circulating in Arabia just before Muhammad's time.</p>
       <p class="card-desc-ar">نطق المسيح في المهد ليس له أي أصل في الأناجيل المعتمدة. هذه القصة مسروقة حرفياً من نص مزور يُعرف بـ "إنجيل الطفولة العربي السرياني"، والذي كان متداولاً كقصص شعبية في الجزيرة العربية قبل الإسلام.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/20/88" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🐂</span><div class="card-verse-ar">عِجْلًا جَسَدًا لَهُ خُوَارٌ</div>
       <div class="card-title">The magical lowing calf</div><div class="card-title-ar">العجل الذهبي وخواره</div>
-      <div class="card-source">٢٠:٨٨ (طه)</div><div class="card-ref">Quran 20:88 (View source)</div>
+      <div class="card-source">٢٠:٨٨ (طه)</div>
+      <div class="card-links"><a href="https://quran.com/20/88" target="_blank" class="card-link">Quran 20:88</a></div>
       <p class="card-desc">Claims the Israelites' golden calf statue physically "lowed" (made a mooing sound). This is not in the original biblical Exodus, but was copied from *Pirkei De-Rabbi Eliezer*, a later Jewish rabbinic myth making the idol magically vocal.</p>
       <p class="card-desc-ar">يدعي القرآن أن تمثال العجل الذهبي الذي صنعه بنو إسرائيل أخرج صوتاً (خواراً). هذه الإضافة السحرية غير موجودة في النص التوراتي الأصلي، بل نُقلت من أساطير حاخامية تلمودية متأخرة صيغت لإضافة طابع درامي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
+    </div>
 
-    <!-- NEW CARDS: HISTORY -->
-    <a href="https://quran.com/28/38" target="_blank" class="card a-blue" data-trad="meccan">
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🧱</span><div class="card-verse-ar">فَأَوْقِدْ لِي يَا هَامَانُ عَلَى الطِّينِ فَاجْعَل لِّي صَرْحًا</div>
       <div class="card-title">Pharaoh building Tower of Babel</div><div class="card-title-ar">فرعون وبناء برج بابل</div>
-      <div class="card-source">٢٨:٣٨ (القصص)</div><div class="card-ref">Quran 28:38 (View source)</div>
+      <div class="card-source">٢٨:٣٨ (القصص)</div>
+      <div class="card-links"><a href="https://quran.com/28/38" target="_blank" class="card-link">Quran 28:38</a></div>
       <p class="card-desc">Pharaoh orders Haman to build a tower out of baked clay (bricks) to reach the God of Moses. Baked clay was a Mesopotamian building method (Tower of Babel). Ancient Egyptians built massive structures out of carved stone, not baked bricks.</p>
       <p class="card-desc-ar">فرعون يأمر هامان ببناء صرح من الطين المحروق (الآجر) للوصول إلى إله موسى. تاريخياً وأثرياً، البناء بالطين المحروق كان طرازاً معمارياً في بلاد الرافدين (بابل)، بينما شيد الفراعنة صروحهم من الحجارة المنحوتة. خلط واضح بين الحضارات.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/21/68" target="_blank" class="card a-blue" data-trad="meccan">
+    </div>
+
+    <div class="card a-blue" data-trad="meccan">
       <span class="card-icon">🔥</span><div class="card-verse-ar">قَالُوا حَرِّقُوهُ وَانصُرُوا آلِهَتَكُمْ</div>
       <div class="card-title">Abraham thrown into the fire</div><div class="card-title-ar">إلقاء إبراهيم في النار</div>
-      <div class="card-source">٢١:٦٨-٦٩ (الأنبياء)</div><div class="card-ref">Quran 21:68-69 (View source)</div>
+      <div class="card-source">٢١:٦٨-٦٩ (الأنبياء)</div>
+      <div class="card-links"><a href="https://quran.com/21/68" target="_blank" class="card-link">Quran 21:68-69</a></div>
       <p class="card-desc">The story of Abraham surviving a massive fire built by his people is directly copied from *Midrash Rabbah*. The myth originated from a mistranslation: Jewish rabbis translated the city "Ur of the Chaldeans" as "Fire (Or) of the Chaldeans", creating a fake story that the Quran repeats.</p>
       <p class="card-desc-ar">قصة نجاة إبراهيم من النار منسوخة من التراث اليهودي (المدراش). تاريخياً، نشأت هذه الأسطورة بسبب خطأ في الترجمة لدى الحاخامات، حيث ترجموا اسم مدينة "أور الكلدانيين" إلى كلمة "أور" (التي تعني نار بالعبرية). القرآن نقل الأسطورة الناتجة عن خطأ الترجمة كحقيقة إلهية.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
-    <a href="https://quran.com/5/46" target="_blank" class="card a-blue" data-trad="medinan">
+    </div>
+
+    <div class="card a-blue" data-trad="medinan">
       <span class="card-icon">📖</span><div class="card-verse-ar">وَآتَيْنَاهُ الْإِنجِيلَ فِيهِ هُدًى وَنُورٌ</div>
       <div class="card-title">The "Injil" as a single physical book</div><div class="card-title-ar">الإنجيل ككتاب مادي واحد</div>
-      <div class="card-source">٥:٤٦ (المائدة)</div><div class="card-ref">Quran 5:46 (View source)</div>
+      <div class="card-source">٥:٤٦ (المائدة)</div>
+      <div class="card-links"><a href="https://quran.com/5/46" target="_blank" class="card-link">Quran 5:46</a></div>
       <p class="card-desc">The Quran constantly claims Jesus was given a physical book called "The Gospel" (Al-Injil). Historically, Jesus never received or authored any book. The Gospels were four separate biographies written in Greek by anonymous authors decades after his death.</p>
       <p class="card-desc-ar">القرآن يزعم أن عيسى أُوتي كتاباً سماوياً واحداً يُسمى "الإنجيل". من الناحية التاريخية، المسيح لم يتلقَّ أو يكتب أي كتاب. الأناجيل الأربعة هي سير ذاتية كُتبت باليونانية من قبل أتباعه بعد عقود من وفاته. النص القرآني يجهل طبيعة وتاريخ تشكل العهد الجديد.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">History</span></div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -792,168 +1148,208 @@
   <p class="sec-desc t-ar" style="display:none">يُشرع القرآن التمييز الجنسي الصارخ، والتشويه الجسدي القاسي، والعبودية الجنسية لأسرى الحرب كقوانين إلهية صالحة لكل زمان ومكان. المدافعون المعاصرون يضطرون لتغيير المعاني الواضحة في اللغة العربية لتخفيف صدمة هذه التشريعات.</p>
   <div class="grid">
 
-    <a href="https://quran.com/23/5" target="_blank" class="card a-green" data-trad="medinan">
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">⛓️</span><div class="card-verse-ar">أَوْ مَا مَلَكَتْ أَيْمَانُهُمْ</div>
       <div class="card-title">Slavery & sexual ownership</div><div class="card-title-ar">تشريع ملك اليمين والعبودية</div>
-      <div class="card-source">٢٣:٥-٦</div><div class="card-ref">Quran 23:5-6 (View source)</div>
+      <div class="card-source">٢٣:٥-٦</div>
+      <div class="card-links"><a href="https://quran.com/23/5" target="_blank" class="card-link">Quran 23:5-6</a></div>
       <p class="card-desc">"Except from their wives or those their right hands possess (slaves), for indeed, they will not be blamed." Explicit, eternal divine permission for the non-consensual sexual use of enslaved women. Slavery is regulated, never abolished.</p>
       <p class="card-desc-ar">الآية تبيح صراحة للرجل ممارسة الجنس مع "ما ملكت يمينه" (الإماء والعبيد) بدون عقد زواج وبدون موافقتهن بالضرورة. القرآن نظم العبودية وقننها ولم يأتِ بأي نص يُحرم امتلاك البشر أو يلغيه بشكل نهائي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/4/34" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">👊</span><div class="card-verse-ar">وَاضْرِبُوهُنَّ</div>
       <div class="card-title">Wife beating permitted</div><div class="card-title-ar">إباحة ضرب الزوجات</div>
-      <div class="card-source">٤:٣٤ (النساء)</div><div class="card-ref">Quran 4:34 (View source)</div>
+      <div class="card-source">٤:٣٤ (النساء)</div>
+      <div class="card-links"><a href="https://quran.com/4/34" target="_blank" class="card-link">Quran 4:34</a></div>
       <p class="card-desc">For wives who show arrogance/disobedience: advise them, abandon their beds, and "strike them" (idribuhunna). Apologists lie saying it means "tap with a toothbrush." The Arabic verb *daraba* implies causing physical pain, used elsewhere for striking rocks and necks.</p>
       <p class="card-desc-ar">تشريع صريح بضرب الزوجات في حالة التمرد والنشوز. التبريرات الحديثة بأنه "ضرب خفيف بالسواك" تتعارض تماماً مع المعنى اللغوي الواضح للفعل "ضَرَبَ" الذي يُقصد به إيقاع الألم الجسدي وفرض السيطرة بالقوة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/2/282" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">⚖️</span><div class="card-verse-ar">فَرَجُلٌ وَامْرَأَتَانِ</div>
       <div class="card-title">Women’s testimony worth half</div><div class="card-title-ar">شهادة المرأة بنصف شهادة الرجل</div>
-      <div class="card-source">٢:٢٨٢ (البقرة)</div><div class="card-ref">Quran 2:282 (View source)</div>
+      <div class="card-source">٢:٢٨٢ (البقرة)</div>
+      <div class="card-links"><a href="https://quran.com/2/282" target="_blank" class="card-link">Quran 2:282</a></div>
       <p class="card-desc">"Bring two men as witnesses; if not, then a man and two women... so that if one of the women errs, the other can remind her." Explicitly states a woman's memory and mental capacity are inherently legally deficient compared to a man's.</p>
       <p class="card-desc-ar">القرآن يثبت تفوقاً ذكورياً في القانون، حيث يجعل شهادة رجل واحد مساوية لشهادة امرأتين. الآية تبرر ذلك صراحة باحتمالية ضلال ونسيان المرأة ("أن تضل إحداهما"). هذا تشريع يحط من القدرة العقلية للمرأة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/65/4" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">🧒</span><div class="card-verse-ar">وَاللَّائِي لَمْ يَحِضْنَ</div>
       <div class="card-title">Pre-pubescent marriage</div><div class="card-title-ar">تشريع زواج القاصرات</div>
-      <div class="card-source">٦٥:٤ (الطلاق)</div><div class="card-ref">Quran 65:4 (View source)</div>
+      <div class="card-source">٦٥:٤ (الطلاق)</div>
+      <div class="card-links"><a href="https://quran.com/65/4" target="_blank" class="card-link">Quran 65:4</a></div>
       <p class="card-desc">Provides the divorce waiting period (Idda - 3 months) for "those who have not yet menstruated" (allai lam yahidna). Establishing a divorce protocol for pre-pubescent girls explicitly proves that the consummation of child marriage is divinely sanctioned.</p>
       <p class="card-desc-ar">تحدد الآية فترة الانتظار (العدة) عند الطلاق بـ 3 أشهر للفتيات "اللاتي لم يحضن". وضع تشريع صريح لطلاق أطفال لم يبلغن سن البلوغ هو دليل قاطع على أن القرآن يبيح زواج الصغيرات والدخول بهن شرعاً.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/33/50" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">👑</span><div class="card-verse-ar">خَالِصَةً لَكَ مِنْ دُونِ الْمُؤْمِنِينَ</div>
       <div class="card-title">Muhammad’s special privileges</div><div class="card-title-ar">الامتيازات الجنسية لمحمد</div>
-      <div class="card-source">٣٣:٥٠ (الأحزاب)</div><div class="card-ref">Quran 33:50 (View source)</div>
+      <div class="card-source">٣٣:٥٠ (الأحزاب)</div>
+      <div class="card-links"><a href="https://quran.com/33/50" target="_blank" class="card-link">Quran 33:50</a></div>
       <p class="card-desc">The creator of the universe writes an eternal verse specifically bypassing the 4-wife limit solely for Muhammad. He is permitted unlimited wives, slave girls, and any believing woman who offers herself to him. A blatantly self-serving revelation.</p>
       <p class="card-desc-ar">إله الكون يخصص آية كاملة فقط ليعفي محمداً من الحد الأقصى للزوجات. وتبيح له الآية أن يتزوج بأي عدد من النساء، وبما ملكت يمينه، وبأي امرأة تهب نفسها له مجاناً. تشريع مفصل لخدمة شهوات شخص واحد فقط.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/47/4" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">🗡️</span><div class="card-verse-ar">فَضَرْبَ الرِّقَابِ</div>
       <div class="card-title">Beheading captives</div><div class="card-title-ar">التشريع بقطع الرؤوس</div>
-      <div class="card-source">٤٧:٤ (محمد)</div><div class="card-ref">Quran 47:4 (View source)</div>
+      <div class="card-source">٤٧:٤ (محمد)</div>
+      <div class="card-links"><a href="https://quran.com/47/4" target="_blank" class="card-link">Quran 47:4</a></div>
       <p class="card-desc">"When you meet the disbelievers in battle, strike their necks..." A permanent, un-abrogated divine command for extreme brutality, decapitation, and mass slaughter in holy war until the enemy is entirely subdued.</p>
       <p class="card-desc-ar">الآية تأمر المسلمين بضرب رقاب (قطع رؤوس) الذين كفروا في المعارك بدموية بالغة، ثم الاستمرار في أسرهم وتقييدهم. هذا التوجيه يُستخدم كتشريع أبدي لشرعنة العنف الشديد وإرهاب المخالفين.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/4/24" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">💔</span><div class="card-verse-ar">وَالْمُحْصَنَاتُ مِنَ النِّسَاءِ إِلَّا مَا مَلَكَتْ أَيْمَانُكُمْ</div>
       <div class="card-title">Raping captured married women</div><div class="card-title-ar">استباحة نكاح المتزوجات المأسورات</div>
-      <div class="card-source">٤:٢٤ (النساء)</div><div class="card-ref">Quran 4:24 (View source)</div>
+      <div class="card-source">٤:٢٤ (النساء)</div>
+      <div class="card-links"><a href="https://quran.com/4/24" target="_blank" class="card-link">Quran 4:24</a></div>
       <p class="card-desc">Forbids sex with married women, *except* those captured as prisoners of war. Their previous marriages to non-Muslim men are automatically dissolved by the act of enslavement, making them legally available for sexual use by their captors.</p>
       <p class="card-desc-ar">القرآن يحرم الزواج من النساء المتزوجات، لكنه يستثني سبايا الحرب المأسورات (ما ملكت أيمانكم). بمجرد أسرهن، يتم إلغاء زواجهن السابق فوراً، مما يشرع للمسلمين اغتصابهن واستعبادهن جنسياً حتى لو كان أزواجهن أحياء.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/4/56" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">🔥</span><div class="card-verse-ar">بَدَّلْنَاهُمْ جُلُودًا غَيْرَهَا لِيَذُوقُوا الْعَذَابَ</div>
       <div class="card-title">Eternal Skin-Roasting</div><div class="card-title-ar">التعذيب السادي في الجحيم</div>
-      <div class="card-source">٤:٥٦ (النساء)</div><div class="card-ref">Quran 4:56 (View source)</div>
+      <div class="card-source">٤:٥٦ (النساء)</div>
+      <div class="card-links"><a href="https://quran.com/4/56" target="_blank" class="card-link">Quran 4:56</a></div>
       <p class="card-desc">Allah promises to roast disbelievers in Hell, and whenever their skins are completely burned off, He will miraculously regenerate new skin continuously so they can feel the maximum agony forever. Pure, infinite sadism.</p>
       <p class="card-desc-ar">يصف النص طريقة تعذيب سادية لغير المؤمنين في الجحيم؛ فكلما احترقت جلودهم وذابت، يقوم الله بإنشاء جلود جديدة لهم فوراً لكي تستمر أعصابهم في نقل أقسى درجات الألم الجسدي إلى الأبد. تعذيب انتقامي يتنافى مع أي رحمة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/9/29" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">💰</span><div class="card-verse-ar">وَهُمْ صَاغِرُونَ</div>
       <div class="card-title">Extortion of minorities (Jizya)</div><div class="card-title-ar">الابتزاز المالي للمخالفين (الجزية)</div>
-      <div class="card-source">٩:٢٩ (التوبة)</div><div class="card-ref">Quran 9:29 (View source)</div>
+      <div class="card-source">٩:٢٩ (التوبة)</div>
+      <div class="card-links"><a href="https://quran.com/9/29" target="_blank" class="card-link">Quran 9:29</a></div>
       <p class="card-desc">Commands Muslims to aggressively fight Jews and Christians until they pay the Jizya (protection tax) "with willing submission, and feel themselves subdued/humiliated (saghiroon)." Mafia-style extortion codified into religion.</p>
       <p class="card-desc-ar">يأمر النص المسلمين بشن حرب هجومية ضد اليهود والنصارى حتى يدفعوا ضريبة "الجزية" المالية وهم في حالة خضوع وذلة ومهانة (صاغرون). هذا أشبه بنظام الابتزاز المالي للميليشيات المافياوية مفروض باسم الدين.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/18/74" target="_blank" class="card a-green" data-trad="meccan">
+    </div>
+
+    <div class="card a-green" data-trad="meccan">
       <span class="card-icon">🔪</span><div class="card-verse-ar">فَقَتَلَهُ ۖ قَالَ أَقَتَلْتَ نَفْسًا زَكِيَّةً</div>
       <div class="card-title">Killing an innocent boy</div><div class="card-title-ar">قتل طفل بريء بناءً على النوايا</div>
-      <div class="card-source">١٨:٧٤، ٨٠ (الكهف)</div><div class="card-ref">Quran 18:74, 80 (View source)</div>
+      <div class="card-source">١٨:٧٤، ٨٠ (الكهف)</div>
+      <div class="card-links">
+        <a href="https://quran.com/18/74" target="_blank" class="card-link">Quran 18:74</a>
+        <a href="https://quran.com/18/80" target="_blank" class="card-link">Quran 18:80</a>
+      </div>
       <p class="card-desc">Khidr violently murders a completely innocent, unsinning boy. The divine justification? The boy *might* grow up to be a rebellious disbeliever and grieve his parents. Pre-crime murder sanctioned by God, destroying the illusion of free will.</p>
       <p class="card-desc-ar">قصة قيام "الخضر" بقتل طفل بريء لم يرتكب أي ذنب. التبرير الإلهي لهذه الجريمة هو أن الطفل "قد" يكبر ويصبح عاصياً ويرهق والديه بكفره. هذا يشرع القتل الاستباقي ويهدم مفاهيم العدل، والاختيار الحر، والمساءلة على الأفعال فقط.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/2/228" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">📉</span><div class="card-verse-ar">وَلِلرِّجَالِ عَلَيْهِنَّ دَرَجَةٌ</div>
       <div class="card-title">Men are a "degree above"</div><div class="card-title-ar">تثبيت التفوق الذكوري (الدرجة)</div>
-      <div class="card-source">٢:٢٢٨ (البقرة)</div><div class="card-ref">Quran 2:228 (View source)</div>
+      <div class="card-source">٢:٢٢٨ (البقرة)</div>
+      <div class="card-links"><a href="https://quran.com/2/228" target="_blank" class="card-link">Quran 2:228</a></div>
       <p class="card-desc">"But the men have a degree over them [in responsibility and authority]." The Quran establishes permanent, systemic gender inequality. Men are legally, financially, and morally elevated above women forever by divine decree.</p>
       <p class="card-desc-ar">القرآن يؤسس لتفاوت منهجي ودائم بين الجنسين، مصرحاً بأن "للرجال عليهن درجة". هذه الدرجة تعني تفضيل الرجال في السلطة والمسؤولية والقوامة، مما يجعل مبدأ المساواة الكاملة بين الجنسين مرفوضاً شرعاً.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/111/1" target="_blank" class="card a-green" data-trad="meccan">
+    </div>
+
+    <div class="card a-green" data-trad="meccan">
       <span class="card-icon">🤬</span><div class="card-verse-ar">تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ</div>
       <div class="card-title">God cursing Abu Lahab</div><div class="card-title-ar">إله يشتم خصوم النبي</div>
-      <div class="card-source">١١١:١-٥ (المسد)</div><div class="card-ref">Quran 111:1-5 (View source)</div>
+      <div class="card-source">١١١:١-٥ (المسد)</div>
+      <div class="card-links"><a href="https://quran.com/111/1" target="_blank" class="card-link">Quran 111:1-5</a></div>
       <p class="card-desc">The supreme Creator of 2 trillion galaxies dedicates an entire eternal chapter of his final message to humanity just to throw petty insults at Muhammad's uncle and his wife. A severely human, unimpressive, and petty response.</p>
       <p class="card-desc-ar">يترك خالق الكون العظيم كل قضايا الإنسانية ليُنزل سورة كاملة تُتلى إلى الأبد لمجرد شتم عم النبي "أبو لهب" وزوجته وتوعدهما بالنار. هذا الأسلوب الانفعالي والشخصي يشير بوضوح إلى تأليف بشري محلي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/5/38" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">🪓</span><div class="card-verse-ar">وَالسَّارِقُ وَالسَّارِقَةُ فَاقْطَعُوا أَيْدِيَهُمَا</div>
       <div class="card-title">Amputation for theft</div><div class="card-title-ar">بتر الأطراف بتهمة السرقة</div>
-      <div class="card-source">٥:٣٨ (المائدة)</div><div class="card-ref">Quran 5:38 (View source)</div>
+      <div class="card-source">٥:٣٨ (المائدة)</div>
+      <div class="card-links"><a href="https://quran.com/5/38" target="_blank" class="card-link">Quran 5:38</a></div>
       <p class="card-desc">Commands the irreversible, physical amputation of hands for thieves. A brutal, permanent bodily mutilation for a property crime. This draconian law is rejected by every civilized modern justice and human rights system.</p>
       <p class="card-desc-ar">حكم بقطع وبتر أيدي السارقين كعقاب على جريمة مالية. هذا التشويه الجسدي الدائم والقاسي يتنافى مع كافة مفاهيم حقوق الإنسان الحديثة، ومبادئ التأهيل وإعادة الدمج في المجتمع.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/24/2" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">📿</span><div class="card-verse-ar">فَاجْلِدُوا كُلَّ وَاحِدٍ مِنْهُمَا مِائَةَ جَلْدَةٍ</div>
       <div class="card-title">Flogging for adultery</div><div class="card-title-ar">الجلد العلني للزناة</div>
-      <div class="card-source">٢٤:٢ (النور)</div><div class="card-ref">Quran 24:2 (View source)</div>
+      <div class="card-source">٢٤:٢ (النور)</div>
+      <div class="card-links"><a href="https://quran.com/24/2" target="_blank" class="card-link">Quran 24:2</a></div>
       <p class="card-desc">"The woman and the man guilty of fornication - flog each of them with a hundred stripes... let not pity withhold you." Sadistic public torture prescribed for consenting adults, demanding that a crowd watches the brutalization.</p>
       <p class="card-desc-ar">تأمر الآية بجلد الزاني والزانية 100 جلدة علناً أمام الناس، وتحذر المسلمين من الرأفة بهما في تنفيذ الحكم. معاقبة البالغين المتراضين جسدياً بهذا الشكل السادي والعلني يعزز ثقافة العنف المجتمعي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/2/223" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">👩‍🌾</span><div class="card-verse-ar">نِسَاؤُكُمْ حَرْثٌ لَكُمْ فَأْتُوا حَرْثَكُمْ أَنَّىٰ شِئْتُمْ</div>
       <div class="card-title">Women as "fields"</div><div class="card-title-ar">تشبيه المرأة بالحقل والمزرعة</div>
-      <div class="card-source">٢:٢٢٣ (البقرة)</div><div class="card-ref">Quran 2:223 (View source)</div>
+      <div class="card-source">٢:٢٢٣ (البقرة)</div>
+      <div class="card-links"><a href="https://quran.com/2/223" target="_blank" class="card-link">Quran 2:223</a></div>
       <p class="card-desc">"Your wives are a place of sowing of seed for you, so come to your place of cultivation however you wish..." This completely dehumanizes women, reducing them to agricultural property meant for male sexual penetration and breeding.</p>
       <p class="card-desc-ar">الآية تشبه النساء بالأرض الزراعية (الحرث) التي يحق للرجل أن يستغلها ويأتيها متى وكيفما شاء لغرض المتعة والإنجاب. هذا الوصف يختزل دور المرأة ويشيئها بشكل يمس بكرامتها الإنسانية.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/9/30" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">🗣️</span><div class="card-verse-ar">قَاتَلَهُمُ اللَّهُ ۚ أَنَّىٰ يُؤْفَكُونَ</div>
       <div class="card-title">Allah curses people like a human</div><div class="card-title-ar">الإله يلعن ويشتم كالبشر</div>
-      <div class="card-source">٩:٣٠ (التوبة)</div><div class="card-ref">Quran 9:30 (View source)</div>
+      <div class="card-source">٩:٣٠ (التوبة)</div>
+      <div class="card-links"><a href="https://quran.com/9/30" target="_blank" class="card-link">Quran 9:30</a></div>
       <p class="card-desc">"May Allah destroy them; how are they deluded?" (qatalahumullah). The supposedly omnipotent creator of the cosmos uses a localized tribal curse, essentially praying to Himself to destroy humans. An embarrassingly human projection.</p>
       <p class="card-desc-ar">الآية تستخدم عبارة "قاتلهم الله" ضد اليهود والنصارى. كيف للإله الخالق القادر على كل شيء أن يدعو بالقتل والهلاك على مخلوقاته وكأنه شخص بشري عاجز يلعن خصومه؟ استخدام لغوي بشري لا يليق بمقام الألوهية.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/24/4" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">👁️</span><div class="card-verse-ar">ثُمَّ لَمْ يَأْتُوا بِأَرْبَعَةِ شُهَدَاءَ</div>
       <div class="card-title">4 Male witnesses for Zina</div><div class="card-title-ar">شرط الأربعة شهود التعجيزي</div>
-      <div class="card-source">٢٤:٤ (النور)</div><div class="card-ref">Quran 24:4 (View source)</div>
+      <div class="card-source">٢٤:٤ (النور)</div>
+      <div class="card-links"><a href="https://quran.com/24/4" target="_blank" class="card-link">Quran 24:4</a></div>
       <p class="card-desc">Demands four male eyewitnesses to the physical act of penetration to prove illicit sex. This draconian standard makes proving rape virtually impossible, historically leading to female victims being flogged for "confessing" to sex while failing to produce witnesses.</p>
       <p class="card-desc-ar">لإثبات الزنا، يشترط القرآن وجود 4 شهود رجال رأوا عملية الإيلاج الجنسي بشكل مباشر. هذا الشرط التعجيزي يجعل إثبات جرائم الاغتصاب شبه مستحيل قانونياً، وقد يؤدي لجلد الضحية بتهمة "القذف" إذا لم تحضر الشهود.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/8/41" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">💎</span><div class="card-verse-ar">فَأَنَّ لِلَّهِ خُمُسَهُ وَلِلرَّسُولِ</div>
       <div class="card-title">God demands a cut of war loot</div><div class="card-title-ar">الإله يطلب حصة من الغنائم</div>
-      <div class="card-source">٨:٤١ (الأنفال)</div><div class="card-ref">Quran 8:41 (View source)</div>
+      <div class="card-source">٨:٤١ (الأنفال)</div>
+      <div class="card-links"><a href="https://quran.com/8/41" target="_blank" class="card-link">Quran 8:41</a></div>
       <p class="card-desc">"Know that anything you obtain of war booty - then unto Allah is one fifth of it, and to the Messenger..." The eternal supreme deity demands a 20% cut of stolen gold, livestock, and enslaved humans from tribal raids. A highly convenient law for the Prophet.</p>
       <p class="card-desc-ar">الآية تشرع أن للإله ورسوله نسبة 20% (الخُمس) من الغنائم التي تُنهب في الحروب. من الغريب جداً أن إلهاً غنياً عن العالمين يطالب بنسبة من الذهب والمواشي والبشر المأسورين. هذا التشريع يخدم مصلحة شخصية ومادية واضحة للقيادة.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
+    </div>
 
-    <!-- NEW CARDS: MORAL -->
-    <a href="https://quran.com/33/37" target="_blank" class="card a-green" data-trad="medinan">
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">💍</span><div class="card-verse-ar">فَلَمَّا قَضَىٰ زَيْدٌ مِّنْهَا وَطَرًا زَوَّجْنَاكَهَا</div>
       <div class="card-title">Marrying the adopted son's wife</div><div class="card-title-ar">الزواج من زوجة الابن بالتبني</div>
-      <div class="card-source">٣٣:٣٧ (الأحزاب)</div><div class="card-ref">Quran 33:37 (View source)</div>
+      <div class="card-source">٣٣:٣٧ (الأحزاب)</div>
+      <div class="card-links"><a href="https://quran.com/33/37" target="_blank" class="card-link">Quran 33:37</a></div>
       <p class="card-desc">God supposedly sends down a universe-altering revelation simply to cancel the noble institution of adoption, purely so Muhammad could marry his adopted son Zayd's attractive ex-wife, Zaynab. A glaringly self-serving, convenient revelation.</p>
       <p class="card-desc-ar">يدعي النص أن الله أنزل آية من سابع سماء لإلغاء مؤسسة التبني الإنسانية بأكملها، والهدف الوحيد هو تبرير وتشريع زواج محمد من زينب، الزوجة السابقة لابنه بالتبني زيد. تشريع مفصل بشكل مكشوف لخدمة رغبة شخصية للمؤلف.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
-    <a href="https://quran.com/66/5" target="_blank" class="card a-green" data-trad="medinan">
+    </div>
+
+    <div class="card a-green" data-trad="medinan">
       <span class="card-icon">🎭</span><div class="card-verse-ar">عَسَىٰ رَبُّهُ إِن طَلَّقَكُنَّ أَن يُبْدِلَهُ أَزْوَاجًا خَيْرًا مِّنكُنَّ</div>
       <div class="card-title">Threatening wives with replacement</div><div class="card-title-ar">تهديد الزوجات بالاستبدال</div>
-      <div class="card-source">٦٦:٥ (التحريم)</div><div class="card-ref">Quran 66:5 (View source)</div>
+      <div class="card-source">٦٦:٥ (التحريم)</div>
+      <div class="card-links"><a href="https://quran.com/66/5" target="_blank" class="card-link">Quran 66:5</a></div>
       <p class="card-desc">"If he divorces you, his Lord may give him instead wives better than you... virgins." A divine threat leveled against Muhammad's own wives to submit to him, or else God will replace them with better, virgin women. Patriarchal coercion dressed as theology.</p>
       <p class="card-desc-ar">نص قرآني يهدد زوجات محمد صراحة بأنه إن لم يطعنه، فإن الله سيستبدلهن بنساء أفضل وعذارى (أبكار). استخدام الوحي كأداة قمع وترهيب ذكوري لإخضاع الزوجات في نزاع منزلي، وهو أسلوب بشري استغلالي.</p>
       <div class="badges"><span class="badge b-vs">Direct quote</span><span class="badge b-red">Moral</span></div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -977,7 +1373,7 @@
 <footer>
   <div class="wrap">
     <p class="mantra">الحق لا يخاف البحث</p>
-    <p>All verses taken directly from the <strong>Classical Arabic Quran (Hafs ʿan ʿĀṣim — Uthmani script)</strong>. No cherry-picking — the errors, contradictions and immoral teachings are plain in the original Arabic text. Click any card to verify directly on Quran.com. All links verified 2026.</p>
+    <p>All verses taken directly from the <strong>Classical Arabic Quran (Hafs ʿan ʿĀṣim — Uthmani script)</strong>. No cherry-picking — the errors, contradictions and immoral teachings are plain in the original Arabic text. Click any verse link to verify directly on Quran.com. All links verified 2026.</p>
     <div class="eternal-footer">
       <a href="eternal-truth.html" class="eternal-btn"><span class="om-symbol">ॐ</span> Eternal Truth — Explore the Living Tradition</a>
     </div>
@@ -1068,4 +1464,3 @@
 
 </body>
 </html>
-```
